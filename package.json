@@ -1,7 +1,9 @@
 {
   "name": "Jelly",
+  "description": "A science app",
   "license": "MIT",
   "url": "https://gitlab.com/jellylabs/jelly",
+  "version": "0.1",
   "private": false,
   "dependencies": {
     "@rails/actioncable": "^6.0.0-alpha",
