@@ -1,5 +1,7 @@
 {
-  "name": "jelly_app",
+  "name": "Jelly",
+  "license": "MIT",
+  "url": "https://gitlab.com/jellylabs/jelly",
   "private": false,
   "dependencies": {
     "@rails/actioncable": "^6.0.0-alpha",
