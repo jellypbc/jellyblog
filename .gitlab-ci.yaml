@@ -1,0 +1,56 @@
+image: "ruby:2.5"
+
+cache:
+  paths:
+    - vendor/ruby
+    - $HOME/.yarn-cache
+
+variables:
+  RAILS_ENV: test
+  POSTGRES_DB: test_db
+  POSTGRES_USER: runner
+  POSTGRES_PASSWORD: ""
+  REDISTOGO_URL: redis://redis:6379
+  REDISCLOUD_URL: redis://redis:6379
+
+before_script:
+  - apt-get update -yq
+  - apt-get install -y postgresql postgresql-contrib libpq-dev apt-transport-https build-essential cmake wget nodejs unzip node-gyp
+  - gem install bundler
+  - bundle install --no-deployment --path vendor
+  - ruby -v
+  - curl -sL https://deb.nodesource.com/setup_8.x | bash
+  - apt-get update -qq && apt-get install -yqq nodejs libpq-dev
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+  - source ~/.bashrc
+  - yarn  
+  - cp config/database.yml.gitlab config/database.yml
+  - bundle exec rake db:create db:schema:load
+
+stages:
+  - test
+
+test:
+  stage: test
+  services:
+    - redis:latest
+    - postgres:latest
+  script:
+    - bundle exec rails spec
+
+# staging:
+#   stage: deploy
+#   script:
+#   - gem install dpl
+#   - dpl --provider=heroku --app=gitlab-ci-ruby-test-staging --api-key=$HEROKU_STAGING_API_KEY
+#   only:
+#   - master
+
+# production:
+#   stage: deploy
+#   script:
+#   - gem install dpl
+#   - dpl --provider=heroku --app=gitlab-ci-ruby-test-prod --api-key=$HEROKU_PRODUCTION_API_KEY
+#   only:
+#   - tags
