@@ -1,4 +1,5 @@
 Rails.application.configure do
+  config.webpacker.check_yarn_integrity = true
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -59,4 +60,7 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  host = ENV['HOST'] || 'localhost:3000'
+  Rails.application.routes.default_url_options[:host] = host
 end

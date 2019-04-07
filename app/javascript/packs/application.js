@@ -1,9 +1,41 @@
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
+// To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
+// layout file, like app/views/layouts/application.html.erb
 
-require("@rails/ujs").start()
-require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
+// // Support component names relative to this directory:
+var componentRequireContext = require.context("components", true);
+var ReactRailsUJS = require("react_ujs");
+var _ = require('lodash/core');
+ReactRailsUJS.useContext(componentRequireContext)
+
+import 'babel-polyfill';
+import 'paper';
+
+import Rails from 'rails-ujs';
+import Turbolinks from 'turbolinks';
+// import 'bootstrap';
+// import 'bootstrap/dist/js/bootstrap';
+// import 'react-stripe-elements';
+
+Rails.start();
+Turbolinks.start();
+
+$(function() {
+  $('.js-flash-dismiss').on('click', function(e) {
+    e.preventDefault();
+    return $(e.target).closest('.js-flash-container').hide();
+  });
+  // close on esc
+  return $(document).keyup(function(e) {
+    if (e.keyCode === 27) {
+      $('.js-flash-container').hide();
+    }
+  });
+});
+
+document.addEventListener("turbolinks:load", function(event){
+  ReactRailsUJS.mountComponents()
+  if (typeof ga === "function") {
+    ga("set", "location", event.data.url);
+    ga("send", "pageview");
+  }
+})

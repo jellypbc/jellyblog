@@ -1,0 +1,9 @@
+- flash.each do | key, value |
+  .js-flash-container class="#{'start-reset animated fadeIn' if key == 'start'}"
+    .container
+      .flash.animated.fadeInUp class=key
+        - if key == ( "start" || "preview_researcher" )
+          = image_tag("potion.png")
+
+        = value
+        .dismiss.js-flash-dismiss &#10005;

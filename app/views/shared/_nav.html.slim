@@ -1,0 +1,27 @@
+nav class="#{'admin' if user_is_admin?}"
+  div.container.d-flex.flex-column.flex-md-row.align-items-center
+    a.my-0.mr-md-auto.navbar-brand href=root_path
+      = inline_svg "jelly.svg", title: "jelly Logo"
+        
+    .my-2.my-md-0
+      a.p-3 href=browse_path
+        | Browse
+      a.p-3 href=new_post_path
+        | Post a Job
+
+      - if current_user
+        .nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            | My Account
+          .dropdown-menu.dropdown-menu-right aria-labelledby="navbarDropdown"
+            a.dropdown-item href=user_drafts_path(current_user)
+              | My Posts
+            a.dropdown-item href=settings_path
+              | User Settings
+            .dropdown-divider
+            a.dropdown-item href=logout_path
+              | Log Out
+
+      - else
+        .nav-item.right
+          = link_to "Sign Up", register_path, class: "btn btn-secondary btn-register mlm"

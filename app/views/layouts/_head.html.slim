@@ -1,0 +1,55 @@
+ruby:
+  meta_description = content_for?(:meta_description) ? yield(:meta_description) : "Find cool science jobs"
+
+  if content_for?(:meta_project_image_url)
+    meta_image_url = yield(:meta_project_image_url)
+    meta_image_width = content_for?(:meta_project_image_width) ? yield(:meta_project_image_width) : nil
+    meta_image_height = content_for?(:meta_project_image_height) ? yield(:meta_project_image_height) : nil
+  else
+    meta_image_url = image_url('jelly.png')
+    meta_image_width = "600"
+    meta_image_height = "300"
+  end
+
+head
+  title = full_title yield(:title)
+  meta name="Research Pizza | #{yield(:title)}" content=meta_tag_sanitize_and_truncate(meta_description)
+  meta name="Description" content="Find cool science jobs. Research Pizza is a job board for academic and industry science jobs, for postdocs, graduate students, and faculty positions. Search for your next job."
+  meta name="Keywords" content="science research jobs researchpizza academic hiring labwork fieldwork biology medical chemistry resume"
+  meta name='viewport' content='width=device-width, initial-scale=1'
+  meta charset="utf-8"
+
+  meta itemprop="name" content=yield(:title)
+  meta itemprop="description" content=meta_tag_sanitize_and_truncate(meta_description)
+
+  meta property='og:site_name' content='Research Pizza - Science Job Board'
+  meta property='og:url' content=request.original_url
+  meta property="og:title" content=meta_tag_sanitize_and_truncate(yield(:title))
+  meta property="og:description" content=meta_tag_sanitize_and_truncate(meta_description)
+  meta property="og:image" content=meta_image_url
+  meta property="og:image:secure_url" content=meta_image_url
+
+  meta name="twitter:domain" content="research.pizza"
+  meta name='twitter:site' content='@researchpizza'
+  meta name='twitter:widgets:csp' content='on'
+  meta name="twitter:title" content=yield(:title)
+  meta name="twitter:description" content=meta_tag_sanitize_and_truncate(meta_description)
+  meta name="twitter:image" content=meta_image_url
+  meta name="twitter:card" content="summary"
+
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+
+  = favicon_link_tag asset_path('favicon.png')
+  
+  link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet"
+
+  = csrf_meta_tags
+  = csp_meta_tag
+
+  - if Rails.env.production?
+    = javascript_include_tag src="https://www.googletagmanager.com/gtag/js?id=UA-133328321-1"
+    javascript:
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-133328321-1');
