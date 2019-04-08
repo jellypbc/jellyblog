@@ -1,0 +1,144 @@
+@import 'variables';
+@import 'mixins';
+
+$flash_types: (
+  info: rgb(240, 248, 249),
+  success: rgb(235, 247, 245),
+  error: rgb(255, 241, 241),
+  warning: rgb(255, 249, 229),
+);
+
+.js-flash-container {
+  position: absolute;
+  z-index: 280;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.subtle-flash-container {
+  position: absolute;
+  z-index: 260;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.flash {
+  background-color: map-get($flash_types, info);
+  border-radius: 5px;
+  border: 2px solid darken(map-get($flash_types, info), 30%);
+  padding: 12px 22px;
+  margin-top: 10px;
+  color: darken(map-get($flash_types, info), 50%);
+  box-shadow: 0px 3px 13px -4px #999;
+
+  a {
+    color: darken(map-get($flash_types, info), 50%);
+    text-decoration: underline;
+  }
+
+  .dismiss {
+    float: right;
+    cursor: pointer;
+    font-weight: 600;
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+
+  @each $type, $color in $flash_types {
+    &.#{$type} {
+      background-color: $color;
+      border: 2px solid (darken($color, 30%));
+      color: darken($color, 50%);
+      a {
+        color: darken($color, 50%);
+      }
+
+    }
+  }
+  .verification {
+    img {
+      width: 40px;
+      height: 40px;
+      display: inline;
+      vertical-align: top;
+    }
+    p {
+      display: inline-block;
+      padding: 0;
+      margin:0 0 0 20px;
+    }
+    display: inline;
+  }
+  &.start {
+    width: 95%;
+    z-index: 99;
+    left: -1px;
+    // position: absolute;
+    img {
+      width: 25px;
+      height: 25px;
+      margin: 0 10px 0 0;
+      vertical-align: bottom;
+    }
+  }
+}
+.start-reset {
+  position: absolute;
+  display: block;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.subtle-flash {
+  position: relative;
+
+  .flash {
+    background-color: $brandBlue;
+    color: $grayLighterer;
+    font-size: 16px;
+    border: 0px;
+    padding: 10px 10px;
+    box-shadow: none;
+    border-radius: 0px;
+    a {
+      color: $brandOcean;
+    }
+  }
+}
+.privacy-notice {
+  margin-top: 0;
+  padding-top: 10px;
+  border-radius: 0;
+  border: none;
+  background-color: #19695A;
+  font-size: 15px;
+  color: $white;
+  @include text-antialiased;
+
+  p {
+    @include desktop-styles {
+      width: 74%;
+    }
+    display: inline-block;
+  }
+
+  a {
+    color: $white;
+  }
+
+  .btn-primary {
+    @include desktop-styles {
+      float: right;
+    }
+
+    text-decoration: none;
+    vertical-align: top;
+    background-color: #16BC96;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 12px auto;
+  }
+}

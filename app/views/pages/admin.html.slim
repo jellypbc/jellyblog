@@ -1,0 +1,11 @@
+- content_for(:title) { "About" }
+
+.pages
+  .container.mbg
+    .row
+      .col-md-85
+        .header
+          h1 Admin Dashboard
+
+        ul
+          li = link_to "Users", admin_users_path

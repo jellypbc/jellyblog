@@ -1,0 +1,9 @@
+.nav-item.dropdown {
+  .dropdown-item {
+    &:active,
+    &:focus {
+      background-color: $footerColor;
+      color: $shaleDark;
+    }
+  }
+}

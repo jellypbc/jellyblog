@@ -1,0 +1,71 @@
+#user-drafts,
+#user-show,
+#user-edit {
+  padding: 80px 0;
+  background-color: $white;
+}
+
+.signup {
+  input:focus,
+  input:active {
+    box-shadow: 0 2px 11px 0 rgba(255,91,70,0.15);
+  }
+
+  background-color: $white;
+  margin: 0 auto;
+  display: block;
+  padding: 20px 0 10vh 0;
+
+  .container-fluid {
+    width: 330px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 40px 0 10px 0;
+  }
+
+  form {
+    margin: 40px 0;
+  }
+
+  label {
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    font-weight: 700;
+    font-size: 14px;
+    color: $shaleDark;
+  }
+
+  input {
+    padding: 11px 14px;
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 20px;
+  }
+}
+
+.password-resets {
+  padding: 40px 0 80px 0;
+}
+
+.user-form {
+  input[type="password"],
+  input[type="text"] {
+    @include desktop-styles {
+      width: 60%;
+    }
+    width: 90%;
+  }
+
+  label {
+    display: block;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 22px;
+  }
+}

@@ -3,10 +3,8 @@
 @import "utilities";
 
 // vendor
-/*@import "bootstrap/bootstrap";*/
+@import "bootstrap/dist/css/bootstrap";
 @import "font-awesome";
-/*@import "vendor/trix";*/
-/*@import "vendor/datepicker";*/
 @import "animate.css/animate.min";
 
 // layouts
@@ -15,3 +13,4 @@
 
 // site
 @import "pages";
+@import "users";

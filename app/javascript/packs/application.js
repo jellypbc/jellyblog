@@ -8,13 +8,10 @@ var _ = require('lodash/core');
 ReactRailsUJS.useContext(componentRequireContext)
 
 import 'babel-polyfill';
-import 'paper';
 
 import Rails from 'rails-ujs';
 import Turbolinks from 'turbolinks';
-// import 'bootstrap';
-// import 'bootstrap/dist/js/bootstrap';
-// import 'react-stripe-elements';
+import 'bootstrap/dist/js/bootstrap';
 
 Rails.start();
 Turbolinks.start();

@@ -3,7 +3,7 @@
   "description": "A science app",
   "license": "MIT",
   "url": "https://gitlab.com/jellylabs/jelly",
-  "version": "0.1",
+  "version": "0.1.0",
   "private": false,
   "dependencies": {
     "@rails/actioncable": "^6.0.0-alpha",
@@ -14,16 +14,16 @@
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.3.1",
     "immutable": "^4.0.0-rc.12",
+    "jquery": "^3.3.1",
     "lodash": "^4.17.11",
     "paper": "^0.12.0",
-    "popper": "^1.0.1",
+    "popper.js": "^1.15.0",
     "rails-ujs": "^5.2.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react_ujs": "^2.5.0",
     "turbolinks": "^5.2.0"
   },
-  "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3.2.1"
   }

@@ -1,0 +1,29 @@
+.signup
+  .container
+    h1 Create an Account
+
+    p
+      | Already have one? 
+      = link_to "Log in!", login_path
+
+    = form_for @user do |f|
+      .field
+        label
+          | First Name
+          = f.text_field :first_name, required: true
+
+        label
+          | Last Name
+          = f.text_field :last_name, required: true
+
+        label
+          | Email
+          = f.email_field :email, required: true
+      
+      .field
+        label
+          | Password
+          = f.password_field :password, required: true, minlength: 5, maxlength: 300
+      
+      .actions
+        = f.submit "Sign Up", class: "btn btn-primary btn-lg"

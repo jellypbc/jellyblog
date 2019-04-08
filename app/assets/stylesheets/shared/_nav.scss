@@ -1,0 +1,58 @@
+nav {
+  // background-image: asset-url('p5.svg');
+  // background-repeat: repeat;
+  // background-color: #FDF0EF;
+  background-color: $white;
+  padding: 0.9rem 0;
+  .navbar-brand {
+    position: relative;
+    top: -3px;
+  }
+  h5 a {
+    color: $brandRed;
+    font-weight: 700;
+  }
+  a {
+    @include text-antialiased;
+    color: $shaleDark;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -.1px;
+    &:hover {
+      color: $brandRed;
+      opacity: 0.8;
+      transition-duration: 0.15s;
+      text-decoration: none;
+    }
+  }
+  svg {
+    height: 23px;
+  }
+  .dropdown,
+  .dropdown.show {
+    display: inline-block;
+    margin: 0;
+  }
+  .navbarDropdown {
+    left: -80px;
+  }
+  .btn-register {
+    @include text-antialiased;
+    font-size: 14px;
+    padding: 3px 9px 4px 9px;
+    font-weight: 700;
+  }
+  &.admin {
+    border-top: 1px solid red;
+  }
+}
+
+
+.right {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.turbolinks-progress-bar {
+  visibility: hidden;
+}

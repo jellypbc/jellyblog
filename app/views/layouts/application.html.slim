@@ -11,9 +11,6 @@ html lang='en-us'
 
     = render 'shared/footer' unless @no_footer
 
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-
   javascript:
     if (!Turbolinks) { location.reload(); }
     Turbolinks.dispatch("turbolinks:load");

@@ -1,3 +1,10 @@
+@import "shared/buttons";
+@import "shared/nav";
+@import "shared/form";
+@import "shared/flashes";
+@import "shared/pagination";
+@import "shared/dropdown";
+
 .content {
   background-color: $white;
 }
