@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   require 'sidekiq/cron/web'
   mount Sidekiq::Web, at: '/sidekiq', constraints: AdminConstraint.new
 
+  resources :posts
+
   resources :users
   get 'settings', to: 'users#edit', as: 'settings'
-
   get 'register', to: 'users#new', as: 'register'
   post :register, to: 'users#create'
   get 'login', to: 'sessions#new', as: 'login'

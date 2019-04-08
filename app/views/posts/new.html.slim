@@ -1,0 +1,24 @@
+- content_for(:title) { "New Post" }
+/ - user = UserSerializer.new(current_user).serializable_hash || nil
+
+#new-post
+  .container
+    .row  
+      .col-md-8
+        .post-form
+          h1 New Post
+          / = react_component 'PostContainer', user: user, post: PostSerializer.new(@post).serializable_hash, stripe_pk: Rails.configuration.stripe[:publishable_key], categories: @categories, secret: @secret, coupon: @coupon
+
+          = form_for @post do |f|
+            
+            = f.label "Title"
+            = f.text_field :title
+
+            = f.label "Post"
+            = f.text_area :body
+
+            = f.hidden_field :user_id, id: current_user.id
+
+            br
+
+            = f.submit

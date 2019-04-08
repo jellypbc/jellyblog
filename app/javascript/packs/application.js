@@ -12,6 +12,7 @@ import 'babel-polyfill';
 import Rails from 'rails-ujs';
 import Turbolinks from 'turbolinks';
 import 'bootstrap/dist/js/bootstrap';
+import 'paper/dist/paper-full';
 
 Rails.start();
 Turbolinks.start();
