@@ -5,6 +5,7 @@
 #  id           :bigint(8)        not null, primary key
 #  title        :string
 #  body         :text
+#  body_json    :jsonb
 #  slug         :string
 #  public       :boolean
 #  published_at :datetime
@@ -18,8 +19,6 @@ class Post < ApplicationRecord
   include Slugged
   include SlugHistory
 
-  validates :title, presence: true
-
   slug :title, attribute: :slug
   remember_slug
 
@@ -30,6 +29,14 @@ class Post < ApplicationRecord
 
   def to_param
     slug
+  end
+  
+  def self.find_by_id_or_slug(param)
+    if (param.is_a? Integer) || (param.to_i != 0)
+      Post.find param
+    else
+      Post.where("lower(slug) = lower(:param)", param: param).first
+    end
   end
 
 

@@ -1,11 +1,13 @@
 #new-post
   .container
     .row  
-      .col-md-85
+      .col-md-12
         .post-form
           pre
             | Editing Post
             - if current_user && user_is_admin?
               | : #{@post.id}
+
+          = render "form", post: @post
 
           / = react_component 'PostContainer', user: UserSerializer.new(current_user).serializable_hash, post: PostSerializer.new(@post).serializable_hash, stripe_pk: Rails.configuration.stripe[:publishable_key], categories: @categories

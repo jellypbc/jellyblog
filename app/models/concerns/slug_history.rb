@@ -34,6 +34,6 @@ module SlugHistory
     end
 
     def save_slug!(slug)
-      $redis.SET self.class.slug_history_key(slug), id
+      # $redis.SET self.class.slug_history_key(slug), id
     end
 end

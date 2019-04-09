@@ -5,6 +5,7 @@
 #  id           :bigint(8)        not null, primary key
 #  title        :string
 #  body         :text
+#  body_json    :jsonb
 #  slug         :string
 #  public       :boolean
 #  published_at :datetime

@@ -1,0 +1,14 @@
+- content_for(:title) { "#{@project.title}" }
+
+#project-show
+  .container
+    .col-sm-12.col-md-12
+
+      .project-body
+        .title
+          h1 = @project.title
+
+          - if current_user && @project.users.include?(current_user)
+            = link_to "Edit project", edit_project_path(@project)
+            span.mhl |
+            = link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' } 

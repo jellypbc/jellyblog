@@ -2,7 +2,9 @@ nav {
   // background-image: asset-url('p5.svg');
   // background-repeat: repeat;
   // background-color: #FDF0EF;
-  background-color: $white;
+  background-color: transparent;
+  z-index: 3;
+  position: relative;
   padding: 0.9rem 0;
   .navbar-brand {
     position: relative;

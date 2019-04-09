@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
 
       t.string :title
       t.text :body
+      t.jsonb :body_json
       t.string :slug
       t.boolean :public
       t.datetime :published_at

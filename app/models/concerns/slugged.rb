@@ -61,11 +61,6 @@ module Slugged
           pending_slug = "#{pending_slug}-#{sequence}"
         end
 
-        if self.try(:employer).try(:name).present?
-          employer_name = ActionController::Base.helpers.strip_tags(employer.name).parameterize
-          pending_slug << "-#{employer_name}"
-        end
-
         pending_slug
       end
   end

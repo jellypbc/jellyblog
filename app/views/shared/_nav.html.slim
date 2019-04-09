@@ -5,6 +5,13 @@ nav class="#{'admin' if user_is_admin?}"
 
     .my-2.my-md-0
       - if current_user
+        a.p-3 href=projects_path
+          | My Projects
+        a.p-3 href=posts_path
+          | My Posts
+        a.p-3 href=new_post_path
+          | Write
+
         .nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
             | My Account
@@ -20,4 +27,4 @@ nav class="#{'admin' if user_is_admin?}"
       
       - else
         .nav-item.right
-          = link_to "Sign Up", register_path, class: "btn btn-secondary btn-register mlm"
+          = link_to "Sign Up", register_path, class: "btn btn-register mlm"

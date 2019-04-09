@@ -1,0 +1,79 @@
+#form {
+  // background: linear-gradient(#C5E1DA, #EADEC8);
+  margin: 0 auto;
+  height: auto;
+  min-height: 100vh;
+}
+
+.post-form {
+  $fontColor: $shale;
+
+  padding-top: 40px;
+
+  .slate-editor,
+  input, textarea {
+    padding: 6px 9px;
+    background-color: transparent;
+    border-radius: 4px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 10px;
+    border: none;
+    // border: 1px solid $grayLighter;
+    font-size: 20px;
+    line-height: 37px;
+    color: $fontColor;
+    // color: $shaleDark;
+  }
+  .slate-editor,
+  textarea {
+    min-height: 60vh;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus {
+    outline: none;
+  }
+
+  input.title {
+    font-family: $serifFont;
+    padding-top: 40px;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+    max-width: 100%;
+    background-color: white;
+  }
+  
+  .button-row {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+
+    button {
+      background-color: transparent;
+      color: $fontColor;
+      border: 2px solid $fontColor;
+      font-size: 17px;
+      padding: 10px;
+    }
+    input[type='submit'] {
+      background-color: transparent;
+      color: $fontColor;
+      border: 2px solid $fontColor;
+      width: 90px;
+      font-size: 17px;
+      display: inline-block;
+      padding: 4px 9px;
+      margin: 0 4px;
+    }
+  }
+
+  .text {
+    height: 200px;
+  }
+  h1 { font-size: 32px; }
+}
