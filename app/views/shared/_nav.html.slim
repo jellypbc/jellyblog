@@ -1,7 +1,8 @@
 nav class="#{'admin' if user_is_admin?}"
   div.container.d-flex.flex-column.flex-md-row.align-items-center
     a.my-0.mr-md-auto.navbar-brand href=root_path
-      = inline_svg "jelly.svg", title: "jelly Logo"
+      / = inline_svg "jelly.svg", title: "jelly Logo"
+      | Jelly
 
     .my-2.my-md-0
       - if current_user

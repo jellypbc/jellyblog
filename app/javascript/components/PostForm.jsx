@@ -10,8 +10,8 @@ import MarkHotkey from './editor/MarkHotkey'
 
 import AutoReplace from 'slate-auto-replace'
 import SoftBreak from 'slate-soft-break'
-// import EditList from 'slate-edit-list'
-// import PasteLinkify from 'slate-paste-linkify'
+import EditList from 'slate-edit-list'
+import PasteLinkify from 'slate-paste-linkify'
 
 import moment from 'moment'
 
@@ -62,12 +62,12 @@ const plugins = [
     shift: true,
     onlyIn: ['code']
   }),
-  // EditList(),
-  // PasteLinkify({
-  //   type: 'link',
-  //   hrefProperty: 'url',
-  //   collapseTo: 'end'
-  // })
+  EditList(),
+  PasteLinkify({
+    type: 'link',
+    hrefProperty: 'url',
+    collapseTo: 'end'
+  })
 ]
 const today = new Date();
 const formattedDate = 'Journal for ' + moment(today).format('MMM Do, YYYY')
