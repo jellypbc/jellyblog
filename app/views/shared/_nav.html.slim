@@ -4,8 +4,8 @@ nav class="#{'admin' if user_is_admin?}"
       / = inline_svg "jelly.svg", title: "jelly Logo"
       | Jelly
 
-    .my-2.my-md-0
-      - if current_user
+    - if current_user
+      .my-2.my-md-0
         a.p-3 href=new_post_path
           | Write
 
@@ -24,6 +24,6 @@ nav class="#{'admin' if user_is_admin?}"
               | Log Out
 
       
-      - else
-        .nav-item.right
-          = link_to "Sign Up", register_path, class: "btn btn-register mlm"
+      / - else
+      /   .nav-item.right
+      /     = link_to "Sign Up", register_path, class: "btn btn-register mlm"

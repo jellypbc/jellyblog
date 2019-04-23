@@ -1,32 +1,51 @@
-#form {
-  // background: linear-gradient(#C5E1DA, #EADEC8);
+#editor {
   margin: 0 auto;
   height: auto;
   min-height: 100vh;
 }
 
-.post-form {
-  $fontColor: $shale;
+.slate-editor {
+  $fontColor: $shaleDark;
 
   padding-top: 40px;
 
-  .slate-editor,
-  input, textarea {
+  input.title {
+    font-family: $serifFont;
+    padding: 40px 0 0 0;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 40px;
+    max-width: 100%;
+    height: auto;
+    background-color: white;
+    border: none;
+    outline: none;
+  }
+  
+  input,
+  textarea {
     padding: 6px 9px;
-    background-color: transparent;
-    border-radius: 4px;
+    background-color: $white;
+    color: $fontColor;
     width: 100%;
     margin: 0 auto;
     display: block;
     margin-bottom: 10px;
-    border: none;
-    // border: 1px solid $grayLighter;
     font-size: 20px;
     line-height: 37px;
-    color: $fontColor;
-    // color: $shaleDark;
   }
-  .slate-editor,
+
+  h1 {
+    font-size: 32px;
+  }
+  a {
+    color: blue;
+    text-decoration: underline; 
+  }
+  u {
+    text-decoration: underline; 
+  }
+
   textarea {
     min-height: 60vh;
   }
@@ -38,42 +57,14 @@
     outline: none;
   }
 
-  input.title {
-    font-family: $serifFont;
-    padding-top: 40px;
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 40px;
-    max-width: 100%;
-    background-color: white;
-  }
-  
   .button-row {
     margin: 0 auto;
     display: block;
     text-align: center;
 
     button {
-      background-color: transparent;
-      color: $fontColor;
-      border: 2px solid $fontColor;
-      font-size: 17px;
-      padding: 10px;
-    }
-    input[type='submit'] {
-      background-color: transparent;
-      color: $fontColor;
-      border: 2px solid $fontColor;
-      width: 90px;
-      font-size: 17px;
-      display: inline-block;
-      padding: 4px 9px;
-      margin: 0 4px;
+      font-size: 16px;
+      padding: 4px 10px;
     }
   }
-
-  .text {
-    height: 200px;
-  }
-  h1 { font-size: 32px; }
 }

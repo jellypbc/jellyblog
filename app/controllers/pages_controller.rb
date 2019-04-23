@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   before_action :admin_only, only: :admin
 
   def index
+    @no_nav = true
   end
 
   def about

@@ -1,5 +1,7 @@
 - content_for(:title) { "New Post" }
-#form.container.form
-  .row
-    .post-form.col-md-12
-      = react_component "PostEditor", post: @post, readOnly: false
+
+#editor
+  .container
+    .row
+      .col-md-12
+        = render "form", post: @post
