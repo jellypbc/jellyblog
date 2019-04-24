@@ -26,6 +26,7 @@ class Post < ApplicationRecord
 
   scope :are_public, -> { where(public: true) }
 
+  has_many :comments, as: :commentable
 
   def to_param
     slug

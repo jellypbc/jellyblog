@@ -2,7 +2,12 @@
 
 #post-show
   .container
-    .col-sm-12.col-md-12
+    .col-md-12
+      .post-header
+        - if current_user && current_user == @post.user
+          = link_to "Edit post", edit_post_path(@post)
+          span.mhl |
+          = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } 
 
       .post-body
         .title
@@ -11,7 +16,20 @@
         .content
           = @post.body.html_safe if @post.body
  
-          - if current_user && current_user == @post.user
-            = link_to "Edit post", edit_post_path(@post)
-            span.mhl |
-            = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } 
+
+      .comments
+        - @post.comments.each do |comment|
+          .comment
+            .comment-user = comment.user.username
+            .comment-content = comment.content
+            .date #{time_ago_in_words(comment.created_at)} ago
+            - if current_user && comment.user == current_user
+              = link_to 'Delete', [comment.commentable, comment], method: :delete, data: { confirm: 'Are you sure?' } 
+
+
+        - comment = @post.comments.new
+        = form_for [@post, comment] do |f|
+          .field
+            = f.text_area :content, rows: 3, required: true
+          .actions
+            = f.submit "Add Comment", class: "btn btn-primary"

@@ -1,0 +1,7 @@
+.container
+  .comments
+    - @commentable.comments.each do |comment|
+      .comment
+        .comment-user = comment.user.username
+        .comment-content = comment.content
+        .date #{time_ago_in_words(comment.created_at)} ago

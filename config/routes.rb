@@ -4,8 +4,13 @@ Rails.application.routes.draw do
   require 'sidekiq/cron/web'
   mount Sidekiq::Web, at: '/sidekiq', constraints: AdminConstraint.new
 
-  resources :projects
-  resources :posts
+  resources :projects do
+    resources :comments
+  end
+
+  resources :posts do
+    resources :comments
+  end
 
   resources :users
   get 'settings', to: 'users#edit', as: 'settings'
@@ -14,6 +19,8 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   post :login, to: 'sessions#create'
   get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  resources :comments
 
   resource :sessions, only: [:create, :destroy]
 
@@ -25,7 +32,6 @@ Rails.application.routes.draw do
   namespace :admin, module: 'admin' do
     resources :users
   end
-
 
   root to: 'pages#index'
 end

@@ -19,7 +19,6 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :posts
-  
   has_many :project_ownerships
   has_many :projects, through: :project_ownerships
 
@@ -31,6 +30,7 @@ class User < ApplicationRecord
 
   before_save :set_username
 
+  has_many :comments
 
   def to_param
     username
