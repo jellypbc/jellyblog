@@ -1,0 +1,27 @@
+.content.pvg.mbg
+  .container.mbg
+    .row
+      .col-md-8
+        .header
+          h1 Posts
+          p #{@posts.total_entries} posts
+
+          .back-to = link_to "Back to Admin", admin_path
+      .col-md-12
+        .mvg
+          table.table
+            thead
+              tr
+                th ID
+                th Title
+                th Post
+                th Created At
+            tbody
+              - @posts.each do |post|
+                tr
+                  td = link_to post.id, post_path(post)
+                  td = post.title
+                  td = post.user.full_name
+                  td = post.created_at.strftime("%d %b %Y %l:%M %p")
+
+          = will_paginate @posts

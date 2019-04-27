@@ -43,10 +43,12 @@ class SlateEditor extends React.Component {
 
     var { post } = this.props
 
+    console.log(this.props)
     this.state = {
       title: (post.data.attributes.title || initialTitle),
       value: (post.data.attributes.body && htmlSerializer.deserialize(post.data.attributes.body) || initialValue ),
-      public: (post.data.attributes.public || false)
+      public: (post.data.attributes.public || false),
+      post: post || null
     };
   }
 
@@ -102,7 +104,7 @@ class SlateEditor extends React.Component {
   }
 
   handleSubmit() {
-    var id = this.props.post.id || null
+    var id = this.state.post.id || null
     var action = id === null ? '/posts' : ('/posts/' + id)
 
     var post = {
@@ -110,10 +112,6 @@ class SlateEditor extends React.Component {
       body: htmlSerializer.serialize(this.state.value),
       public: this.state.public
     }
-
-    console.log(id)
-    console.log(action)
-    console.log(post)
 
     localStorage.clear();
 

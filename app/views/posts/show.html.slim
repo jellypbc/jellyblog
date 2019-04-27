@@ -2,34 +2,36 @@
 
 #post-show
   .container
-    .col-md-12
-      .post-header
-        - if current_user && current_user == @post.user
-          = link_to "Edit post", edit_post_path(@post)
-          span.mhl |
-          = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } 
+    .post-header
+      - if current_user && current_user == @post.user
+        = link_to "Edit", edit_post_path(@post)
+        span.mhs |
+        = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } 
 
-      .post-body
-        .title
-          h1 = @post.title
+    .post-body
+      .title
+        h1 = @post.title
 
-        .content
-          = @post.body.html_safe if @post.body
- 
-
-      .comments
-        - @post.comments.each do |comment|
-          .comment
-            .comment-user = comment.user.username
-            .comment-content = comment.content
-            .date #{time_ago_in_words(comment.created_at)} ago
-            - if current_user && comment.user == current_user
-              = link_to 'Delete', [comment.commentable, comment], method: :delete, data: { confirm: 'Are you sure?' } 
+      .content
+        = @post.body.html_safe if @post.body
 
 
-        - comment = @post.comments.new
-        = form_for [@post, comment] do |f|
-          .field
-            = f.text_area :content, rows: 3, required: true
-          .actions
-            = f.submit "Add Comment", class: "btn btn-primary"
+    .comments
+      - @post.comments.each do |comment|
+        .comment
+          .comment-user
+            = link_to comment.user.username, comment.user
+          .comment-content = comment.content
+          .date #{time_ago_in_words(comment.created_at)} ago
+
+          - if current_user && comment.user == current_user
+            = link_to [comment.commentable, comment], method: :delete, data: { confirm: 'Are you sure?' } do
+              | Delete
+
+
+      - comment = @post.comments.new
+      = form_for [@post, comment] do |f|
+        .field
+          = f.text_area :content, rows: 3, required: true
+        .actions
+          = f.submit "Add Comment", class: "btn btn-primary"

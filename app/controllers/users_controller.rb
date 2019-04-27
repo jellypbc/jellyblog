@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
     if @user.save
       login(@user)
-      redirect_to after_sign_in_path, notice: "Welcome to Research Pizza, thank you for signing up!"
+      redirect_to after_sign_in_path, notice: "Welcome home."
     else
       msg = @user.errors.messages.map{|m| m[1] }.join(", ")
       redirect_back(fallback_location: root_path, notice: "Oops, there was an error: #{msg}")

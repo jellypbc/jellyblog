@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   namespace :admin, module: 'admin' do
     resources :users
+    resources :posts
   end
 
   root to: 'pages#index'
