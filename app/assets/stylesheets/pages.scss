@@ -18,18 +18,19 @@ canvas[resize] {
 .home {
   .cover {
     width: 100%;
-    background: white;
     height: 100%;
     position: absolute;
     display: block;
     z-index: 3;
-    mix-blend-mode: darken;
+    // mix-blend-mode: darken;
+    background: white;
+    mix-blend-mode: lighten;
   }
   h1 {
     position: absolute;
     z-index: 2;
     top: 0;
-    padding-top: 29vh;
+    padding-top: 25vh;
     text-align: center;
     font-family: 'Baloo', cursive;
     margin: 0 auto;
@@ -39,11 +40,29 @@ canvas[resize] {
     font-size: 200px;
     mix-blend-mode: initial;
     // mix-blend-mode: multiply;
-    opacity: 0.9;
+    opacity: 1;
     letter-spacing: -0.25rem;
     user-select: none;
-    color: $white;
-    background: royalblue;
+    color: black;
+    background: white;
+  }
+  p {
+    // font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    // font-family: 'Merriweather', cursive;
+    font-family: 'Fredoka One', cursive;
+    position: relative;
+    font-size: 32px;
+    text-align: center;
+    margin: 0 auto;
+    width: 56%;
+    height: 100%;
+    color: black;
+    top: 54vh;
+    background: transparent;
+    z-index: 3;
+    mix-blend-mode: initial;
+    line-height: 49px;
   }
   sub {
     // color: $white;
