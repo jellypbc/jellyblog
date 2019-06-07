@@ -12,9 +12,19 @@ canvas[resize] {
   z-index: 1;
   position: absolute;
   top: -70px;
+  background: #DE2424;
 }
 
 .home {
+  .cover {
+    width: 100%;
+    background: white;
+    height: 100%;
+    position: absolute;
+    display: block;
+    z-index: 3;
+    mix-blend-mode: darken;
+  }
   h1 {
     position: absolute;
     z-index: 2;
@@ -27,10 +37,17 @@ canvas[resize] {
     height: 100%;
     display: block;
     font-size: 200px;
-    mix-blend-mode: multiply;
+    mix-blend-mode: initial;
+    // mix-blend-mode: multiply;
     opacity: 0.9;
-    letter-spacing: -0.2rem;
-    color: #EC1A61;
+    letter-spacing: -0.25rem;
     user-select: none;
+    color: $white;
+    background: royalblue;
+  }
+  sub {
+    // color: $white;
+    font-size: 32px;
+    letter-spacing: 1px;
   }
 }

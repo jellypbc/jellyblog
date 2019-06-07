@@ -10,7 +10,7 @@
     this.sidePoints = [];
     this.path = new Path({
       fillColor: {
-        hue: Math.random() * 50,
+        hue: (Math.random() * 20) + 336,
         saturation: 1,
         brightness: 1
       },
@@ -139,6 +139,9 @@
 </script>
 
 <div class="home">
-  <canvas id='canvas' resize hidpi="off" style="background:#fff"></canvas>
-  <h1>Jelly</h1>
+  <div class="cover">
+    <h1>Jelly Labs <sub>pbc</sub></h1>
+  </div>
+  <canvas id='canvas' resize hidpi="off" background="#DE2424">
+  </canvas>
 </div>
