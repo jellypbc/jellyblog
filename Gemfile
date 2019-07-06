@@ -3,11 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.2'
 
-gem 'rails', '~> 6.0.0.beta3'
+gem 'rails', '~> 6.0.0.rc1'
 gem 'pg'
-gem 'puma', '~> 3.11'
-gem 'sass-rails', '~> 5.0'
-gem 'webpacker', '>= 4.0.0.rc.3'
+gem 'puma', '~> 4'
+gem 'sassc-rails'
+gem 'webpacker', '>= 4.0'
 gem 'react-rails'
 gem 'turbolinks', '~> 5', require: false
 gem 'jbuilder', '~> 2.5'
@@ -68,6 +68,3 @@ group :production do
   gem 'memcachier'
   gem 'connection_pool'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

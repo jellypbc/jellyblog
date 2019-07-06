@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :comments
+    resources :posts
   end
 
   resources :posts do
@@ -33,6 +34,8 @@ Rails.application.routes.draw do
     resources :users
     resources :posts
   end
+
+  get 'dashboard', to: 'pages#dashboard'
 
   root to: 'pages#index'
 end

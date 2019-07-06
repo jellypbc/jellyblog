@@ -1,0 +1,12 @@
+.container
+  h1 Your Projects
+  - @projects.each do |project|
+    .title = project.title
+
+
+
+  h1 Your Posts
+  - @posts.each do |post|
+    .post
+      .title = post.title
+      .date = post.created_at.strftime("%D")
