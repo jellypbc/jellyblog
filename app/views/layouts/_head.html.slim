@@ -6,7 +6,7 @@ ruby:
     meta_image_width = content_for?(:meta_project_image_width) ? yield(:meta_project_image_width) : nil
     meta_image_height = content_for?(:meta_project_image_height) ? yield(:meta_project_image_height) : nil
   else
-    meta_image_url = image_url('jelly.png')
+    meta_image_url = ""
     meta_image_width = "600"
     meta_image_height = "300"
   end
@@ -48,7 +48,7 @@ head
   = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   link href="https://fonts.googleapis.com/css?family=Merriweather|Baloo|Fredoka+One|Open+Sans:400,600,700" rel="stylesheet"
-  link href="jelly.png" rel="shortcut icon" type="image/x-icon"/
+  / link href="jelly.png" rel="shortcut icon" type="image/x-icon"/
 
   - if Rails.env.production?
     = javascript_include_tag src="https://www.googletagmanager.com/gtag/js?id=UA-133328321-1"

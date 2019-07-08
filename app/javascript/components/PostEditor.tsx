@@ -17,6 +17,7 @@ class PostEditor extends React.Component<any, any> {
   }
 
   componentDidMount(){
+    console.log("edit page this.props")
     console.log(this.props)
   }
 

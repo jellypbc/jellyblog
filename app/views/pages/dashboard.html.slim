@@ -1,12 +1,23 @@
-.container
+#dashboard.container
   h1 Your Projects
-  - @projects.each do |project|
-    .title = project.title
 
+  - if @projects.any?
+    - @projects.each do |project|
+      = link_to project do
+        .title = project.title
+        .date = project.created_at
+  - else
+    .muted no projects yet!
 
+  br
+  br
 
   h1 Your Posts
-  - @posts.each do |post|
-    .post
-      .title = post.title
-      .date = post.created_at.strftime("%D")
+  - if @posts.any?
+    - @posts.each do |post|
+      = link_to post do
+        .post.mtg
+          .title = post.title
+          .date = post.created_at.strftime("%D")
+  - else
+    .muted no posts yet!

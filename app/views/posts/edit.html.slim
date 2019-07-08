@@ -2,6 +2,14 @@
 
 #editor
   .container
+    .post-header
+      - if current_user && current_user == @post.user
+        = link_to "Edit", edit_post_path(@post)
+        span.mhs |
+        = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } 
+        span.mhs |
+        = link_to "Back to Dashboard", dashboard_path
+
     .row
       .col-md-12
         pre

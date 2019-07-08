@@ -49,7 +49,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener'
   gem 'guard'
-  gem 'guard-livereload'
+  gem 'guard-livereload', require: false
   gem 'guard-rspec', require: false
   gem 'rack-livereload'
   gem 'annotate'

@@ -18,7 +18,6 @@ class PostsController < ApplicationController
   end
 
   def create
-  
     @post = current_user.posts.new(post_params)
 
     respond_to do |format|
@@ -26,7 +25,6 @@ class PostsController < ApplicationController
         # @post.set_slug!
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: {redirect_to: post_path(@post) } }
-        # format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -36,9 +34,12 @@ class PostsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
+
+      if @post.update!(post_params)
+        post = Post.find @post.id
+
+        format.html { redirect_to post.slug, notice: 'Post was successfully updated.' }
+        format.json { render json: { redirect_to: post_path(post) } }
       else
         format.html { render :edit }
         format.json { render json: @post.errors, status: :unprocessable_entity }

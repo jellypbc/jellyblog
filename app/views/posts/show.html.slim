@@ -7,16 +7,21 @@
         = link_to "Edit", edit_post_path(@post)
         span.mhs |
         = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } 
+        span.mhs |
+        = link_to "Back to Dashboard", dashboard_path
+
 
     .post-body
-      .title
-        h1 = @post.title
+      = react_component "PostRenderer", post: PostSerializer.new(@post).serializable_hash
+      / .title
+      /   h1 = @post.title
 
-      .content
-        = @post.body.html_safe if @post.body
+      / .content
+      /   = @post.body.html_safe if @post.body
 
 
     .comments
+      h3 Comments
       - @post.comments.each do |comment|
         .comment
           .comment-user

@@ -53,6 +53,9 @@ RSpec.describe PostsController, type: :controller do
     it "returns a success response" do
       post = Post.create! valid_attributes
       get :show, params: {id: post.to_param}, session: valid_session
+      puts ">>>>>>>"
+      puts response
+      puts ">>>>>>>"
       expect(response).to be_successful
     end
   end
