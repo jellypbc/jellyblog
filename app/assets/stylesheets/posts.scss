@@ -14,9 +14,29 @@
 }
 
 .post {
+  border: 2px solid $grayLighter;
+  border-radius: 6px;
+  padding: 20px 22px 18px 22px;
+  margin-top: 5px;
+
+  .title, a, h1 {
+    color: $shaleDark;
+  }
+
   .title {
     font-family: $serifFontFamily;
-    font-size: 24px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .preview {
+    margin: 12px 0;
+    font-size: 15px;
+  }
+  .date {
+    font-size: 14px;
+    color: $grayLight;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
   }
 }
 

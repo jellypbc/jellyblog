@@ -23,6 +23,7 @@ class Post < ApplicationRecord
   remember_slug
 
   belongs_to :user
+  belongs_to :project
 
   scope :are_public, -> { where(public: true) }
 

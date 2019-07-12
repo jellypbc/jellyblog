@@ -162,6 +162,7 @@ class SlateEditor extends React.Component {
           onChange={this.onChange}
           renderNode={renderNode}
           renderMark={renderMark}
+          readOnly={false}
         />
 
         <div className="button-row">

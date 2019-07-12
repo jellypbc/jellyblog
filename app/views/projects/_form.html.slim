@@ -1,9 +1,9 @@
 = form_for project do |f|
 
-  = f.label :title
+  = f.label "Project Title"
   = f.text_field :title
 
   br
   br
 
-  = f.submit
+  = f.submit "Create Project", class: "btn btn-primary"

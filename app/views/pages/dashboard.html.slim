@@ -1,23 +1,46 @@
 #dashboard.container
-  h1 Your Projects
+  .row
+    .col-md-3
+      h2 Your Projects
 
-  - if @projects.any?
-    - @projects.each do |project|
-      = link_to project do
-        .title = project.title
-        .date = project.created_at
-  - else
-    .muted no projects yet!
+      - if @projects.any?
+        - @projects.each do |project|
 
-  br
-  br
+          .mtg
+            = link_to project do
+              .title
+                h3 = project.title
+              .date
+                = project.created_at.strftime("%D")
 
-  h1 Your Posts
-  - if @posts.any?
-    - @posts.each do |post|
-      = link_to post do
-        .post.mtg
-          .title = post.title
-          .date = post.created_at.strftime("%D")
-  - else
-    .muted no posts yet!
+      - else
+        .muted no projects yet!
+
+      .new_projects.mtg
+        = link_to 'New Project', new_project_path, class: "btn btn-primary btn-sm"
+
+    .col-md-9
+      h2 Recent Activity
+
+      - if @posts.any?
+        - @posts.each do |post|
+
+          .mtg
+            .author
+
+              span.muted
+                | #{post.user.first_name} published
+                - if post.project.present?
+                  | in #{post.project.title}
+
+            = link_to post do
+              .post
+                .title
+                  = post.title
+                .preview
+                  = post.body.truncate(120, separator: "...").html_safe
+
+                .date
+                  | #{time_ago_in_words(post.created_at)} ago
+      - else
+        .muted no posts yet!
