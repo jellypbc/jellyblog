@@ -16,19 +16,30 @@ variables:
   REDISCLOUD_URL: redis://redis:6379
 
 before_script:
-  - apt-get update -yq
-  - apt-get install -y postgresql postgresql-contrib libpq-dev apt-transport-https build-essential cmake wget nodejs unzip node-gyp
+  # - apt-get update -yq
+  # - apt-get install -y postgresql postgresql-contrib libpq-dev apt-transport-https build-essential cmake wget nodejs unzip node-gyp
+  - apt-get update -qq && apt-get install -y -qq postgresql postgresql-contrib libpq-dev cmake nodejs libpq-dev
   - ruby -v
-  - gem install bundler                                       
-  - bundle install --no-deployment --path vendor
-  - curl -sL https://deb.nodesource.com/setup_8.x | bash
-  - apt-get update -qq && apt-get install -yqq nodejs libpq-dev
+  - which ruby
+  - gem install bundler --no-ri --no-rdoc
+  - RAILS_ENV=test bundle install --jobs $(nproc) "${FLAGS[@]}"
+  - cp config/database.yml.gitlab config/database.yml
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
   - source ~/.bashrc
-  - yarn  
-  - cp config/database.yml.gitlab config/database.yml
-  - bundle exec rake db:create db:schema:load
+  - yarn
+  - RAILS_ENV=test bundle exec rake db:create db:schema:load
+
+  # - gem install bundler                                       
+  # - bundle install --no-deployment --path vendor
+  # - curl -sL https://deb.nodesource.com/setup_8.x | bash
+  # - apt-get update -qq && apt-get install -yqq nodejs libpq-dev
+  # - curl -o- -L https://yarnpkg.com/install.sh | bash
+  # - export PATH=$HOME/.yarn/bin:$PATH
+  # - source ~/.bashrc
+  # - yarn  
+  # - cp config/database.yml.gitlab config/database.yml
+  # - bundle exec rake db:create db:schema:load
 
 stages:
   - test
