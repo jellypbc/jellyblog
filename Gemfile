@@ -7,7 +7,7 @@ gem 'rails', '~> 6'
 gem 'pg'
 gem 'puma', '~> 4'
 gem 'sassc-rails'
-gem 'webpacker', '>= 4.0'
+gem 'webpacker'
 gem 'react-rails'
 gem 'turbolinks', '~> 5', require: false
 gem 'jbuilder', '~> 2.5'
