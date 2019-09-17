@@ -13,6 +13,8 @@
 
 FactoryBot.define do
   factory :comment do
-    
+  	user
+    commentable { user }
+    content { 'Some witty comment' }
   end
 end

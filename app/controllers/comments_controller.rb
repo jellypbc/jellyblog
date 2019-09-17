@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :load_commentable
+  before_action :admin_only, only: :index
+  before_action :load_commentable, only: :show
   before_action :find_comment, only: :destroy
 
   def index
+    @comments = Comment.all
   end
 
   def new
@@ -45,7 +47,13 @@ class CommentsController < ApplicationController
 
     def load_commentable
       resource, id = request.path.split('/')[1,2]
-      @commentable = resource.singularize.classify.constantize.find_by_id_or_slug(id)
+      klass = resource.singularize.classify.constantize
+
+      if klass == Post
+        @commentable = klass.find_by_id_or_slug(id)
+      else
+        raise ActiveRecord::RecordNotFound
+      end
     end
 
     # from experiment

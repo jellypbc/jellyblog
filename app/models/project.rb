@@ -15,6 +15,4 @@ class Project < ApplicationRecord
   has_many :project_ownerships
   has_many :users, through: :project_ownerships
 
-  has_many :comments, as: :commentable
-
 end
