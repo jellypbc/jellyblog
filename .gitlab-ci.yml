@@ -1,8 +1,10 @@
 image: "ruby:2.6.2"
 
 cache:
+  key: ${CI_COMMIT_REF_SLUG}
   paths:
     - vendor/ruby
+    - node_mo dules/
     - $HOME/.yarn-cache
 
 variables:
@@ -17,7 +19,7 @@ before_script:
   - apt-get update -yq
   - apt-get install -y postgresql postgresql-contrib libpq-dev apt-transport-https build-essential cmake wget nodejs unzip node-gyp
   - ruby -v
-  - gem install bundler
+  - gem install bundler                                       
   - bundle install --no-deployment --path vendor
   - curl -sL https://deb.nodesource.com/setup_8.x | bash
   - apt-get update -qq && apt-get install -yqq nodejs libpq-dev
