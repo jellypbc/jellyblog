@@ -1,34 +1,28 @@
-/ nav class="#{'admin' if user_is_admin?}"
 nav
   .container.d-flex.flex-column.flex-md-row.align-items-center
-    / - path = current_user.present? ? dashboard_path : root_path
-    - path = root_path
-    a.my-0.mr-md-auto.navbar-brand href=path
-      / = inline_svg "jelly.svg", title: "jelly Logo"
-      | Jelly
+    .header
+      canvas id='canvas' class='animated fadeIn' resize=true hidpi="off" background="#29D04E"
+      a.my-0.mr-md-auto.navbar-brand href=root_path
+        h1 Jelly Labs
 
-    - if current_user
-      .my-2.my-md-0
-        a.p-3 href=new_post_path
-          | Write
 
-        .nav-item.dropdown
-          a#navbarDropdown.nav-link.dropdown-toggle href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            | #{current_user.username}
-          .dropdown-menu.dropdown-menu-right aria-labelledby="navbarDropdown"
-            a.dropdown-item href=dashboard_path
-              | My Dashboard
-            a.dropdown-item href=projects_path
-              | My Projects
-            a.dropdown-item href=posts_path
-              | My Posts
-            a.dropdown-item href=settings_path
-              | User Settings
-            .dropdown-divider
-            a.dropdown-item href=logout_path
-              | Log Out
+      - if current_user
+        .my-2.my-md-0.right
+          a.mrg href=new_post_path
+            | Write
 
-      
-      / - else
-      /   .nav-item.right
-      /     = link_to "Sign Up", register_path, class: "btn btn-register mlm"
+          .nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              | #{current_user.username}
+            .dropdown-menu.dropdown-menu-right aria-labelledby="navbarDropdown"
+              a.dropdown-item href=dashboard_path
+                | My Dashboard
+              a.dropdown-item href=projects_path
+                | My Projects
+              a.dropdown-item href=posts_path
+                | My Posts
+              a.dropdown-item href=settings_path
+                | User Settings
+              .dropdown-divider
+              a.dropdown-item href=logout_path
+                | Log Out

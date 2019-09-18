@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :admin_only, only: :index
-  before_action :load_commentable, only: :show
+  before_action :load_commentable, only: [:show, :create]
   before_action :find_comment, only: :destroy
 
   def index

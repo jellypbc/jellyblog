@@ -2,28 +2,21 @@
 
 #post-show
   .container
-    .post-header
-      - if current_user && current_user == @post.user
-        = link_to "Edit", edit_post_path(@post)
-        span.mhs |
-        = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } 
-        span.mhs |
-        = link_to "Back to Dashboard", dashboard_path
-
 
     .post-body
       = react_component "PostRenderer", post: PostSerializer.new(@post).serializable_hash
-      / .title
-      /   h1 = @post.title
 
-      / .content
-      /   = @post.body.html_safe if @post.body
+    .post-header
+      - if current_user && current_user == @post.user
+        span Admin | 
+        = link_to "Edit", edit_post_path(@post)
+        span.mhs |
+        = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } 
 
-
-    .comments
+    .post-comments
       h3 Comments
       - @post.comments.each do |comment|
-        .comment
+        .comment.mvm
           .comment-user
             = link_to comment.user.username, comment.user
           .comment-content = comment.content
@@ -33,10 +26,10 @@
             = link_to [comment.commentable, comment], method: :delete, data: { confirm: 'Are you sure?' } do
               | Delete
 
-
-      - comment = @post.comments.new
-      = form_for [@post, comment] do |f|
-        .field
-          = f.text_area :content, rows: 3, required: true
-        .actions
-          = f.submit "Add Comment", class: "btn btn-primary"
+      - if current_user
+        - comment = @post.comments.new
+        = form_for [@post, comment] do |f|
+          .field
+            = f.text_area :content, rows: 3, required: true
+          .actions
+            = f.submit "Add Comment", class: "btn btn-primary"

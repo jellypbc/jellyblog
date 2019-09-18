@@ -10,11 +10,11 @@
   padding-top: 0px;
 
   input.title {
-    font-family: $serifFontFamily;
+    -webkit-font-smoothing: antialiased;
     padding: 40px 0 0 0;
     font-weight: 700;
-    font-size: 28px;
-    line-height: 40px;
+    font-size: 32px;
+    line-height: 44px;
     max-width: 100%;
     height: auto;
     background-color: white;
