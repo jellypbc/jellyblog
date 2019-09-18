@@ -5,7 +5,8 @@ class PagesController < ApplicationController
   def index
     @no_nav = true
 
-    @posts = Post.paginate(page: params[:page], per_page: 30)
+    @posts = Post.are_public
+      .paginate(page: params[:page], per_page: 30)
   end
 
   def dashboard
