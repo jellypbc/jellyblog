@@ -30,8 +30,8 @@
 
               span.muted
                 | #{post.user.first_name} published
-                - if post.project.present?
-                  | in #{post.project.title}
+                / - if post.project.present?
+                /   | in #{post.project.title}
 
             = link_to post do
               .post
