@@ -14,8 +14,7 @@
         = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } 
 
     .post-comments
-      - if @post.comments
-        h3 Comments
+      h3 Comments
       - @post.comments.each do |comment|
         .comment.mvm
           .comment-user
