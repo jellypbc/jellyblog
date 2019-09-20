@@ -4,16 +4,16 @@
   .container
     .post-header
       - if current_user && current_user == @post.user
-        = link_to "Edit", edit_post_path(@post)
-        span.mhs |
-        = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } 
-        span.mhs |
-        = link_to "Back to Dashboard", dashboard_path
-
-    .row
-      .col-md-12
         pre
           | Editing Post
           - if current_user && user_is_admin?
             | : #{@post.id}
+
+          |&nbsp;|&nbsp;
+          = link_to "Edit", edit_post_path(@post)
+          span.mhs |
+          = link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } 
+
+    .row
+      .col-md-12
         = render "form", post: @post

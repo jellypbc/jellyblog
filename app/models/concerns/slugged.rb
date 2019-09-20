@@ -32,7 +32,7 @@ module Slugged
     # private
 
       def allowed_slug
-        if BLACKLIST.include? send(slug_attribute)
+        if BLACKLIST.include? send(slug_source)
           errors.add slug_attribute, 'This slug is unavailable'
         end
       end

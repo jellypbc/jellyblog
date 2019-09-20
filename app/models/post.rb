@@ -26,6 +26,8 @@ class Post < ApplicationRecord
 
   scope :are_public, -> { where(public: true) }
 
+  validates :title, length: { maximum: 120 }, presence: true
+
   has_many :comments, as: :commentable
 
   def to_param
@@ -37,13 +39,4 @@ class Post < ApplicationRecord
     markdown.render(body)
   end
   
-  def self.find_by_id_or_slug(param)
-    if (param.is_a? Integer) || (param.to_i == true)
-      Post.find param
-    else
-      Post.where("lower(slug) = lower(:param)", param: param).first
-    end
-  end
-
-
 end

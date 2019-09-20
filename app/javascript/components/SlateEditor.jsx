@@ -43,14 +43,12 @@ class SlateEditor extends React.Component {
 
     var { post } = this.props
 
-    console.log("this.props")
-    console.log(this.props)
-
     this.state = {
       title: (post.data.attributes.title || initialTitle),
       value: (post.data.attributes.body && htmlSerializer.deserialize(post.data.attributes.body) || initialValue ),
-      public: (post.data.attributes.public || false),
-      post: post.data || null
+      public: (post.data.attributes.public || true),
+      post: post.data || null,
+      error: null
     };
   }
 
@@ -115,10 +113,6 @@ class SlateEditor extends React.Component {
       body: htmlSerializer.serialize(this.state.value),
       public: this.state.public
     }
-    console.log(id)
-    console.log(this.state)
-    console.log(action)
-    console.log(post)
 
     localStorage.clear();
 
@@ -130,12 +124,12 @@ class SlateEditor extends React.Component {
         post: post
       },
       success: function(data) {
-        console.log(data)
         window.location = data.redirect_to
       }.bind(this),
-      error: function(xhr, status, err) {
+      error: function(e, data, status) {
+        this.setState({error: status})
         console.error(
-          this.props.url, status, err.toString()
+          this.props.url, status
         )
       }.bind(this)
     });
@@ -144,6 +138,30 @@ class SlateEditor extends React.Component {
   render(){
     return (
       <div className="slate-editor">
+        <div className="button-row">
+          <button
+            className="btn btn-outline mrm"
+            onClick={this.togglePublic.bind(this)}
+          >
+            Public: {this.state.public.toString()}
+          </button>
+
+          <button
+            className="btn btn-primary"
+            onClick={this.handleSubmit.bind(this)}
+          >
+            Save
+          </button>
+        </div>
+
+        {this.state.error && 
+          <div className="errors">
+            <p className="error">
+              Error: {this.state.error}
+            </p>
+          </div>
+        }
+
         <input
           className="title"
           ref="title"
@@ -164,22 +182,6 @@ class SlateEditor extends React.Component {
           renderMark={renderMark}
           readOnly={false}
         />
-
-        <div className="button-row">
-          <button
-            className="btn btn-outline mrm"
-            onClick={this.togglePublic.bind(this)}
-          >
-            Public: {this.state.public.toString()}
-          </button>
-
-          <button
-            className="btn btn-primary"
-            onClick={this.handleSubmit.bind(this)}
-          >
-            Save
-          </button>
-        </div>
 
       </div>
     )

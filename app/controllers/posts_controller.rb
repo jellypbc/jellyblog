@@ -4,7 +4,9 @@ class PostsController < ApplicationController
   before_action :authenticate!, except: [:show]
 
   def index
-    @posts = current_user.posts
+    @posts = Post.all
+      .order(created_at: :desc)
+      .paginate(page: params[:page], per_page: 4)
   end
 
   def show
@@ -20,21 +22,22 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
 
-    respond_to do |format|
-      if @post.save!
-        # @post.set_slug!
+    if @post.save!
+      respond_to do |format|
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: {redirect_to: post_path(@post) } }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    else
+      respond_to do |format|
+        # format.js { render json: {dog: "dog"}}
+        # format.js { render status: :bad_request, json: { responseText: @post.errors.full_messages.first } }
+        format.json { render @post.errors.messages.to_json }
       end
     end
   end
 
   def update
     respond_to do |format|
-
       if @post.update!(post_params)
         post = Post.find @post.id
 
@@ -42,7 +45,7 @@ class PostsController < ApplicationController
         format.json { render json: { redirect_to: post_path(post) } }
       else
         format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.json { render json: @post.errors.messages.to_json }
       end
     end
   end
@@ -58,8 +61,17 @@ class PostsController < ApplicationController
   private
 
     def set_post
-      @post = Post.find_by_id_or_slug params[:id] || params[:post_id]
-      raise ActiveRecord::RecordNotFound unless @post
+      id_or_slug = params[:id] || params[:post_id]
+
+      @post ||= begin
+        Post.find_by!(slug: id_or_slug)
+      rescue
+        if (post = Post.find id_or_slug)
+          post
+        else
+          raise ActiveRecord::RecordNotFound
+        end
+      end
     end
 
     def set_form_user

@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     @no_nav = true
 
     @posts = Post.are_public
+      .order(created_at: :desc)
       .paginate(page: params[:page], per_page: 4)
   end
 

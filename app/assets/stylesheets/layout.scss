@@ -5,6 +5,14 @@
 @import "shared/pagination";
 @import "shared/dropdown";
 
+html,
+body {
+  margin: 0;
+  min-height: 100vh;
+  // min-height: 100%;
+  position: relative;
+}
+
 .content {
   background-color: $white;
 }
@@ -41,5 +49,22 @@ div {
   ul li {
     font-size: 12px;
     list-style: square;
+  }
+}
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: -100px;
+  height: 100px;
+  width: 100%;
+
+  background: #F5F5F5;
+  text-align: center;
+
+  img {
+    height: 43px;
+    top: -20px;
+    position: relative;
   }
 }

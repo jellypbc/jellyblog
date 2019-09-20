@@ -16,6 +16,8 @@
 
 FactoryBot.define do
   factory :post do
+  	title { "My post" }
+  	user
     
   end
 end
