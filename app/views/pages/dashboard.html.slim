@@ -1,24 +1,5 @@
 #dashboard.container
   .row
-    .col-md-3
-      h2 Your Projects
-
-      - if @projects.any?
-        - @projects.each do |project|
-
-          .mtg
-            = link_to project do
-              .title
-                h3 = project.title
-              .date
-                = project.created_at.strftime("%D")
-
-      - else
-        .muted no projects yet!
-
-      .new_projects.mtg
-        = link_to 'New Project', new_project_path, class: "btn btn-primary btn-sm"
-
     .col-md-9
       h2 Recent Activity
 

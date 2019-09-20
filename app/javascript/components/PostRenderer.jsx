@@ -33,9 +33,6 @@ class PostRenderer extends React.Component {
 
     var { post } = this.props
 
-    console.log("this.props")
-    console.log(this.props)
-
     this.state = {
       title: (post.data.attributes.title || initialTitle),
       value: (post.data.attributes.body && htmlSerializer.deserialize(post.data.attributes.body) || initialValue ),

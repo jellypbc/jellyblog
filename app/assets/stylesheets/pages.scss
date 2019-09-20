@@ -111,6 +111,7 @@ canvas[resize] {
       margin-top: 60px;
 
       h1 {
+        a { color: $black; }
         font-size: 38px;
         -webkit-font-smoothing: antialiased;
         font-weight: 600;
@@ -124,6 +125,9 @@ canvas[resize] {
       }
       .date {
         color: $grayLight;
+      }
+      a {
+        color: $green;
       }
     }
   }

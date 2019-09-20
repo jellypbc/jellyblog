@@ -6,7 +6,7 @@ import SoftBreak from 'slate-soft-break'
 // import SlateEditList from 'slate-edit-list'
 
 // currently not working?
-// import SlatePasteLinkify from 'slate-paste-linkify'
+import PasteLinkify from 'slate-paste-linkify'
 
 import MARKS from '../renderer/marks'
 import BLOCKS from '../renderer/blocks'
@@ -60,6 +60,7 @@ const plugins = [
     shift: true,
     onlyIn: ['code']
   }),
+  PasteLinkify(),
 
   // SlateEditList({
   //   types: [BLOCKS.CHECK_LIST],

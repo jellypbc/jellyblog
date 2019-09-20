@@ -132,6 +132,7 @@ function Ball(r, p, v) {
           balls[i].iterate();
       }
   }
+  
   $( document ).on('turbolinks:load', function() {
     window.location.reload()
   })

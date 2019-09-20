@@ -19,8 +19,6 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :posts
-  has_many :project_ownerships
-  has_many :projects, through: :project_ownerships
 
   VALID_EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   VALID_USERNAME_REGEX = /\A[0-9a-z_-]+\z/i

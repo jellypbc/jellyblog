@@ -4,11 +4,6 @@ Rails.application.routes.draw do
   require 'sidekiq/cron/web'
   mount Sidekiq::Web, at: '/sidekiq', constraints: AdminConstraint.new
 
-  resources :projects do
-    resources :comments
-    resources :posts
-  end
-
   resources :posts do
     resources :comments
   end
