@@ -6,7 +6,7 @@ ruby:
     meta_image_width = content_for?(:meta_project_image_width) ? yield(:meta_project_image_width) : nil
     meta_image_height = content_for?(:meta_project_image_height) ? yield(:meta_project_image_height) : nil
   else
-    meta_image_url = ""
+    meta_image_url = image_url('socialcard.png')
     meta_image_width = "600"
     meta_image_height = "300"
   end
@@ -30,7 +30,7 @@ head
   meta property="og:image:secure_url" content=meta_image_url
 
   meta name="twitter:domain" content="jellypbc.com"
-  meta name='twitter:site' content='@jellyscience'
+  meta name='twitter:site' content='@jellypbc'
   meta name='twitter:widgets:csp' content='on'
   meta name="twitter:title" content=yield(:title)
   meta name="twitter:description" content=meta_tag_sanitize_and_truncate(meta_description)

@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     @no_nav = true
 
     @posts = Post.are_public
-      .paginate(page: params[:page], per_page: 30)
+      .paginate(page: params[:page], per_page: 4)
   end
 
   def dashboard

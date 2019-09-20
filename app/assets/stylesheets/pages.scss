@@ -1,9 +1,9 @@
-// html,
-// body {
-//   margin: 0;
-//   overflow: hidden;
-//   height: 100%;
-// }
+html,
+body {
+  margin: 0;
+  // overflow: hidden;
+  height: 100%;
+}
 
 /* Scale canvas with resize attribute to full size */
 canvas[resize] {
@@ -15,18 +15,23 @@ canvas[resize] {
 }
 
 .header {
+  @media (min-width: 600px) {
+    width: 100%;
+    min-height: 300px;
+    margin: 30px 0;
+    padding: 32px;
+  }
+  width: auto;
+  padding: 32px;
+  margin: 10px;
+
   background: blue;
-  width: 100%;
-  min-height: 300px;
   display: block;
   z-index: 3;
   background: white;
   mix-blend-mode: lighten;
   border: 5px solid $jellyGreen;
   border-radius: 8px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  padding: 32px;
 
   h1 {
     position: relative;
@@ -77,14 +82,33 @@ canvas[resize] {
   }
 }
 
+.footer {
+  margin-top: 70px;
+  background: #F5F5F5;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+
+  img {
+    height: 43px;
+    top: -38px;
+    position: relative;
+  }
+}
+
 .home {
   width: 100%;
 
   .posts {
     .home-post {
+      @media (min-width: 768px) {
+        width: 700px;
+      }
+
+      width: auto;
       text-align: left;
       padding: 12px;
-      width: 700px;
+      margin-top: 60px;
 
       h1 {
         font-size: 38px;

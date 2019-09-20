@@ -26,6 +26,7 @@ gem 'fast_jsonapi'
 gem 'sanitize'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
+gem 'redcarpet'
 
 gem 'bootsnap', '>= 1.4.1', require: false
 

@@ -55,6 +55,9 @@ module Slugged
       def generate_slug
         source = send slug_source
         pending_slug = ActionController::Base.helpers.strip_tags(source).parameterize
+        date = Time.now.strftime("%Y-%m-%d")
+
+        pending_slug = "#{date}-#{pending_slug}"
 
         if self.class.where("#{slug_attribute}=?", pending_slug).any?
           sequence = self.class.where("#{slug_attribute} like '#{pending_slug}-%'").count + 2

@@ -5,6 +5,7 @@
 
     .post-body
       = react_component "PostRenderer", post: PostSerializer.new(@post).serializable_hash
+      / = @post.render_body.html_safe
 
     .post-header
       - if current_user && current_user == @post.user
@@ -33,3 +34,5 @@
             = f.text_area :content, rows: 3, required: true
           .actions
             = f.submit "Add Comment", class: "btn btn-primary"
+      - else
+        = link_to "Log in to comment", login_path, class: "btn btn-secondary"

@@ -18,4 +18,8 @@ class PostSerializer
   include FastJsonapi::ObjectSerializer
   include Rails.application.routes.url_helpers
   attributes :id, :slug, :title, :body, :body_json
+
+  # attribute :rendered_markdown do |post|
+  # 	post.render_body
+  # end
 end

@@ -32,9 +32,14 @@ class Post < ApplicationRecord
   def to_param
     slug
   end
+
+  def render_body
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true)
+    markdown.render(body)
+  end
   
   def self.find_by_id_or_slug(param)
-    if (param.is_a? Integer) || (param.to_i != 0)
+    if (param.is_a? Integer) || (param.to_i == true)
       Post.find param
     else
       Post.where("lower(slug) = lower(:param)", param: param).first

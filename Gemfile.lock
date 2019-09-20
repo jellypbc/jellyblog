@@ -253,6 +253,7 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
+    redcarpet (3.5.0)
     redis (4.1.0)
     redis-namespace (1.6.0)
       redis (>= 3.0.4)
@@ -388,6 +389,7 @@ DEPENDENCIES
   rails-controller-testing
   rb-readline
   react-rails
+  redcarpet
   redis
   redis-namespace
   rspec-rails
