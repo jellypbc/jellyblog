@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require_self
+//= require trix/dist/trix 
 //= require_tree .

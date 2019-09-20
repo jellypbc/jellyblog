@@ -80,3 +80,24 @@
     }
   }
 }
+
+
+// begin trix styles
+
+trix-toolbar {
+  position: sticky;
+  background: white;
+  padding: 10px 0;
+  top: 0px;
+  z-index: 1;
+}
+
+trix-editor {
+  min-height: 300px;
+}
+
+.lrg {
+  width: 100%;
+  font-size: 32px;
+  margin-bottom: 40px;
+}

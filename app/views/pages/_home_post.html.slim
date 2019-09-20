@@ -1,0 +1,13 @@
+.home-post
+  h1 = link_to post.title, post_path(post)
+
+  p.date
+  	= "#{post.created_at.strftime("%b %d, %Y")}"
+
+  p
+  	= truncate(strip_tags(post.content.to_s), length: 500, separator: '...')
+
+		/ - if post.body
+		/ 	= post.body.truncate(600, separator: "...").html_safe
+
+  = link_to "Read more", post_path(post)

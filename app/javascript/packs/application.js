@@ -38,3 +38,6 @@ document.addEventListener("turbolinks:load", function(event){
     ga("send", "pageview");
   }
 })
+
+require("trix")
+require("@rails/actiontext")

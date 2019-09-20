@@ -1,1 +1,8 @@
-= react_component "SlateEditor", post: PostSerializer.new(post).serializable_hash, readOnly: false
+/ = react_component "SlateEditor", post: PostSerializer.new(post).serializable_hash, readOnly: false
+
+= form_for @post do |form|
+  .field
+  	= form.text_field :title, class: "lrg", placeholder: "Title"
+    = form.rich_text_area :content, placeholder: "My post..."
+    = form.hidden_field :public, value: true
+    = form.submit "Save", class: "btn btn-primary btn-lg mvg"

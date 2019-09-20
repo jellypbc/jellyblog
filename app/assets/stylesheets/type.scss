@@ -7,13 +7,16 @@ input, span, a {
 }
 
 a {
-  color: $brandRed;
+  color: $jellyGreen;
 }
 
 a:hover {
+  animation-name: changeColor;
+  animation-iteration-count: infinite;
+  animation-duration: .8s;
   text-decoration: none;
-  transition-duration: 0.2s;
-  color: darken($brandRed, 14);
+  // transition-duration: 0.2s;
+  // color: darken($jellyGreen, 14);
 }
 
 p, li {
@@ -55,4 +58,20 @@ td { padding: 0 5px 7px; }
 
 .success {
   color: $brandGreen;
+}
+
+
+@keyframes changeColor {
+  0% {
+    color: #29D06C;
+  }
+  30% {
+    color: #1AE7E7;
+  }
+  60% {
+    color: #29D0A8;
+  }
+  100% {
+    color: #29D06C;
+  }
 }

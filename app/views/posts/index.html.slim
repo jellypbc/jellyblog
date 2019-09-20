@@ -3,12 +3,6 @@
   = link_to "New post", new_post_path, class: "btn btn-primary"
 
   - @posts.each do |post|
-    = link_to post do
-      .post.mvg
-        p = post.created_at.strftime("%D")
-        h2.title = post.title
-
-        = link_to "Edit post", edit_post_path(post)
-        span.mhl |
-        = link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } 
+    = render 'pages/home_post', post: post
+    
   = will_paginate @posts

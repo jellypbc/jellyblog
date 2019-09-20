@@ -18,6 +18,7 @@ class Post < ApplicationRecord
   include TimeScopes
   include Slugged
   include SlugHistory
+  has_rich_text :content
 
   slug :title, attribute: :slug
   remember_slug

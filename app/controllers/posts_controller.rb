@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
       .order(created_at: :desc)
-      .paginate(page: params[:page], per_page: 4)
+      .paginate(page: params[:page], per_page: 10)
   end
 
   def show
@@ -29,6 +29,7 @@ class PostsController < ApplicationController
       end
     else
       respond_to do |format|
+        format.html { render :new }
         # format.js { render json: {dog: "dog"}}
         # format.js { render status: :bad_request, json: { responseText: @post.errors.full_messages.first } }
         format.json { render @post.errors.messages.to_json }
@@ -37,11 +38,12 @@ class PostsController < ApplicationController
   end
 
   def update
+
     respond_to do |format|
       if @post.update!(post_params)
         post = Post.find @post.id
 
-        format.html { redirect_to post.slug, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render json: { redirect_to: post_path(post) } }
       else
         format.html { render :edit }
@@ -97,7 +99,7 @@ class PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(
-        :title, :description, :public, :body_json, :body
+        :title, :description, :public, :body_json, :body, :content
       ).to_h
     end
 end

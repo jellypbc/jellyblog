@@ -52,8 +52,12 @@
     margin: 0 auto;
     margin-bottom: 80px;
 
-    h1 {
-      font-size: 32px;
+    .title {
+      margin: 120px 0 80px 0;
+      h1 {
+        font-size: 38px;
+      }
+
     }
   }
 
@@ -68,4 +72,9 @@
       width: 100%;
     }
   }
+}
+
+.trix-content {
+  line-1eight: 1.7;
+  font-size: 19px;
 }

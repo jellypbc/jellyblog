@@ -52,6 +52,10 @@ canvas[resize] {
     -webkit-font-smoothing: antialiased;
   }
   a {
+    &:hover {
+      color: $shale;
+      animation: none;
+    }
     color: black;
     display: inline-block;
     font-weight: 600;
@@ -108,7 +112,7 @@ canvas[resize] {
         color: $grayLight;
       }
       a {
-        color: $green;
+        color: $jellyGreen;
       }
     }
   }
