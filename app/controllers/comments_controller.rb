@@ -50,7 +50,7 @@ class CommentsController < ApplicationController
       klass = resource.singularize.classify.constantize
 
       if klass == Post
-        @commentable = klass.find_by_id_or_slug(id)
+        @commentable = klass.find_by_slug(id)
       else
         raise ActiveRecord::RecordNotFound
       end
