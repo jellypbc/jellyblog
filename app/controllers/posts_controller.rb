@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :admin_only, only: [:edit, :update, :destroy, :index, :create]
   # before_action :set_form_user, only: [:create]
   before_action :authenticate!, except: [:show]
 
@@ -38,7 +39,6 @@ class PostsController < ApplicationController
   end
 
   def update
-
     respond_to do |format|
       if @post.update!(post_params)
         post = Post.find @post.id
