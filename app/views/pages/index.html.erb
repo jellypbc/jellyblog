@@ -23,7 +23,11 @@
           <div class="social-icons">
             <span>Join us!</span>
             <span>
-              <a href="http://jellypbc.slack.com"><i class="fa fa-slack mlm"></i></a>
+              <% if current_user %>
+                <a href="http://jelly-community.slack.com"><i class="fa fa-slack mlm"></i></a>
+              <% else %>
+                <a href=<%= register_path %>><i class="fa fa-slack mlm"></i></a>
+              <% end %>
             </span>
             <span>
               <a href="http://twitter.com/jellypbc"><i class="fa fa-twitter mlm"></i></a>

@@ -66,14 +66,14 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     user_name: 'apikey',
     password: ENV['SENDGRID_PASSWORD'],
-    domain: 'jelly.science',
+    domain: 'jellypbc.com',
     address: 'smtp.sendgrid.net',
     port: '587',
     authentication: 'plain',
     enable_starttls_auto: true
   }
   config.action_mailer.default_url_options = {
-    host: 'jelly.science',
+    host: 'jellypbc.com',
     protocol: 'https'
   }
 
@@ -125,6 +125,6 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  host = ENV['HOST'] || 'jelly.science'
+  host = ENV['HOST'] || 'jellypbc.com'
   Rails.application.routes.default_url_options[:host] = host
 end

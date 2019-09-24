@@ -2,11 +2,10 @@
   .container.mbg
     .row
       .col-md-8
-        .header
-          h1 Users
-          p #{@users.total_entries} users
+        h1 Users
+        p #{@users.total_entries} users
 
-          .back-to = link_to "Back to Admin", admin_path
+        .back-to = link_to "Back to Admin", admin_path
       .col-md-12
         .mvg
           table.table

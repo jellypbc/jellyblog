@@ -1,4 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+	include AutoLogin
+	
+  default from: 'founders@jellypbc.com'
   layout 'mailer'
 end

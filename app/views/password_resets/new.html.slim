@@ -1,0 +1,15 @@
+.password-resets
+  .container
+    .row
+      .col-md-85
+        h1
+          | Reset Password
+        p
+          | Enter the email address that you used to sign up and we'll send you a link to reset your password.
+
+        = form_tag password_resets_path, :method => :post, class: 'form large' do
+          = label_tag :email, "Email:"
+          = email_field_tag :email, params[:email], placeholder: "carl_sagan@research.pizza", required: true
+          br
+          = submit_tag 'Send Password Reset Email', class: 'btn btn-primary mvg'
+        

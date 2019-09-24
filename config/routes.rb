@@ -8,7 +8,10 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :users
+  resources :users do
+    get :reset_password, as: :reset_password
+  end
+  
   get 'settings', to: 'users#edit', as: 'settings'
   get 'register', to: 'users#new', as: 'register'
   post :register, to: 'users#create'
@@ -31,6 +34,11 @@ Rails.application.routes.draw do
   end
 
   get 'dashboard', to: 'pages#dashboard'
+  get 'slack', to: 'pages#slack'
+
+  get "password_resets/new"
+  get 'et/:token/*path', to: 'email_token#login_and_redirect'
+  resources :password_resets, only: [:create, :edit]
 
   root to: 'pages#index'
 end

@@ -2,15 +2,16 @@
 #
 # Table name: users
 #
-#  id              :bigint(8)        not null, primary key
-#  email           :string
-#  username        :string
-#  first_name      :string
-#  last_name       :string
-#  password_digest :string
-#  admin           :boolean
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                      :bigint           not null, primary key
+#  email                   :string
+#  username                :string
+#  first_name              :string
+#  last_name               :string
+#  password_digest         :string
+#  admin                   :boolean
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  newsletter_signed_up_at :datetime
 #
 
 require 'rails_helper'

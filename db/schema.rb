@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_20_073713) do
+ActiveRecord::Schema.define(version: 2019_09_24_012334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(version: 2019_09_20_073713) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "email_tokens", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "token", null: false
+    t.datetime "expires_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -81,6 +89,7 @@ ActiveRecord::Schema.define(version: 2019_09_20_073713) do
     t.boolean "admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "newsletter_signed_up_at"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

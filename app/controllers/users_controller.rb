@@ -17,9 +17,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+    @user.newsletter_signed_up_at = Time.now if user_params[:newsletter_signed_up_at]
+
     if @user.save
       login(@user)
-      redirect_to after_sign_in_path, notice: "Welcome home."
+      redirect_to after_sign_in_path, notice: "Thanks! You'll receive a Slack invite shortly, and now you can comment on blog posts too. ✨"
     else
       msg = @user.errors.messages.map{|m| m[1] }.join(", ")
       redirect_back(fallback_location: root_path, notice: "Oops, there was an error: #{msg}")
@@ -47,7 +49,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
 
-        @user.avatar.attach(user_params[:avatar])
+        # @user.avatar.attach(user_params[:avatar])
 
         format.html { redirect_to edit_user_path(@user), notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
@@ -103,7 +105,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(
-        :first_name, :last_name, :email, :password, :username, :avatar
+        :first_name, :last_name, :email, :password, :username, :avatar, :newsletter_signed_up_at
       ).to_h
     end
 

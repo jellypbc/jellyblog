@@ -27,6 +27,7 @@ gem 'sanitize'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'redcarpet'
+gem 'recaptcha'
 
 gem 'bootsnap', '>= 1.4.1', require: false
 
