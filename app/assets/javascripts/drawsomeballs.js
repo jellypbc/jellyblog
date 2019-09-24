@@ -146,7 +146,7 @@ const isMobile = () => {
 };
 
 if (isMobile() === false){
-  // $('.header-remove').remove();
+  $('.header-remove').remove();
   $('.header').removeClass('hidden');
 }
 
