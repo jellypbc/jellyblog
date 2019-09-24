@@ -7,6 +7,82 @@ canvas[resize] {
   height: 39px;
 }
 
+.hidden {
+  display: none !important;
+}
+
+.header-remove {
+  @media (min-width: 600px) {
+    width: 100%;
+    min-height: 300px;
+    margin: 30px 0;
+    padding: 32px;
+  }
+  width: auto;
+  padding: 32px;
+  margin: 10px;
+  background: blue;
+  display: block;
+  z-index: 3;
+  background: white;
+  mix-blend-mode: lighten;
+  border: 5px solid $jellyGreen;
+  border-radius: 8px;
+
+  h1 {
+    top: -5px;
+    position: relative;
+    font-size: 38px;
+    font-family: CircularStd;
+    font-weight: 800;
+    -webkit-font-smoothing: antialiased;
+    z-index: 2;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    // mix-blend-mode: lighten;
+    opacity: 1;
+    user-select: none;
+    color: $jellyGreen;
+    margin-bottom: 47px;
+    background: white;
+  }
+  p, a, span {
+    font-family: CircularStd;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    &:hover {
+      color: $shale;
+      animation: none;
+    }
+    color: black;
+    display: inline-block;
+    font-weight: 600;
+    padding-bottom: 0px;
+    border-bottom: 4px solid $jellyGreen;
+  }
+  .block {
+    margin-top: 60px;
+  }
+  .social-icons {
+    @media (min-width: 768px) {
+      float: right;
+      margin-top: 0;
+    }
+    margin-top: 40px;
+    display: inline-block;
+    vertical-align: bottom;
+    a {
+      border: none;
+    }
+  }
+}
+
 .header {
   @media (min-width: 600px) {
     width: 100%;
