@@ -8,7 +8,9 @@ nav {
     display: flex;
     min-height: 80px;
     a {    
-      left: -178px;
+      width: 100%;
+      min-width: 181px;
+      left: -181px;
       top: -6px;
       border-bottom: none;
       height: 45px;
