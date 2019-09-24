@@ -4,8 +4,10 @@
       .col-md-6
         h1 Join our chat!
         br
-        p Hello, 
-        p When you sign up, you'll receive an invite to our Slack channel (http://jelly-community.slack.com) and you'll also be logged in to comment on blog posts here!
+        p Hello friend,
+        p When you sign up, you'll receive an invite to our Slack channel (#{link_to "http://jelly-community.slack.com", "http://jelly-community.slack.com"}) and you'll also be logged in to comment on blog posts here!
+        p
+          | Our Slack has a #{link_to "Code of Conduct", "https://gitlab.com/cindyw/jelly/wikis/Jelly-Community-Slack-Rules"} which you can browse, but please be nice. We are gentle creatures.
 
       .col-md-6
         = form_for @user do |f|
