@@ -32,7 +32,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 5, maximum: 300 }, on: :create
 
   before_save :set_username
-  after_save :send_slack_invite
+  after_create :send_slack_invite
 
   has_many :comments
 
