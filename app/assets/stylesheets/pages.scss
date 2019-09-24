@@ -3,29 +3,17 @@ canvas[resize] {
   z-index: 1;
   position: relative;
   background: $jellyGreen;
-  width: 181px;
+  width: 30%;
+  min-width: 181px;
   height: 39px;
 }
 
-.hidden {
-  display: none !important;
-}
-
 .header-remove {
-  @media (min-width: 600px) {
-    width: 100%;
-    min-height: 300px;
-    margin: 30px 0;
-    padding: 32px;
-  }
-  width: auto;
+  width: 100%;
   padding: 32px;
-  margin: 10px;
-  background: blue;
+  margin: 30px 0;
   display: block;
-  z-index: 3;
-  background: white;
-  mix-blend-mode: lighten;
+  z-index: 100;
   border: 5px solid $jellyGreen;
   border-radius: 8px;
 
@@ -197,4 +185,9 @@ canvas[resize] {
 #dashboard {
   .post {
   }
+}
+
+.hidden {
+  opacity: 0 !important;
+  position: absolute !important;
 }
