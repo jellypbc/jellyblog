@@ -55,7 +55,7 @@ class User < ApplicationRecord
   end
 
   def send_welcome_email
-    UserMailer.welcome_email(self).deliver_now
+    UserMailer.welcome(id).deliver_now
   end
 
   def send_password_reset
