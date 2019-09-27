@@ -4,3 +4,8 @@ nav
       canvas id='canvas' resize=true hidpi="off" background="#29D04E"
       a.my-0.mr-md-auto.navbar-brand href=root_path
         h1 Jelly Labs
+
+      - unless @no_newsletter
+	      .right
+					a.newsletter.border-animation.wobble-top href=follow_path
+						| Sign up for our newsletter

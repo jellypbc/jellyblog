@@ -9,66 +9,11 @@ canvas[resize] {
 }
 
 .header-remove {
-  width: auto;
-  padding: 32px;
-  margin: 10px;
-  margin-top: 30px;
-  display: block;
-  z-index: 100;
-  border: 5px solid $jellyGreen;
-  border-radius: 8px;
-
   h1 {
-    top: -5px;
-    position: relative;
-    font-size: 38px;
-    font-family: CircularStd;
-    font-weight: 800;
-    -webkit-font-smoothing: antialiased;
-    z-index: 2;
-    margin: 0 auto;
-    width: 100%;
-    height: auto;
-    display: inline-block;
-    // mix-blend-mode: lighten;
-    opacity: 1;
-    user-select: none;
-    color: $jellyGreen;
-    margin-bottom: 47px;
-    background: white;
-  }
-  p, a, span {
-    font-family: CircularStd;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 36px;
-    -webkit-font-smoothing: antialiased;
-  }
-  a {
-    &:hover {
-      color: $shale;
-      animation: none;
-    }
-    color: black;
-    display: inline-block;
-    font-weight: 600;
-    padding-bottom: 0px;
-    border-bottom: 4px solid $jellyGreen;
-  }
-  .block {
-    margin-top: 60px;
-  }
-  .social-icons {
-    @media (min-width: 768px) {
-      float: right;
-      margin-top: 0;
-    }
-    margin-top: 40px;
-    display: inline-block;
-    vertical-align: bottom;
-    a {
-      border: none;
-    }
+    height: 90px !important;
+    mix-blend-mode: normal !important;
+    background: white !important;
+    top: -5px !important;
   }
 }
 
@@ -117,9 +62,15 @@ canvas[resize] {
     -webkit-font-smoothing: antialiased;
   }
   a {
+    &.newsletter:hover {
+      animation-name: changeBorderColor;
+      animation-iteration-count: infinite;
+      animation-duration: .8s;      
+    }
     &:hover {
-      color: $shale;
-      animation: none;
+      color: $black;
+      opacity: 1;
+      text-decoration: none;
     }
     color: black;
     display: inline-block;
@@ -153,11 +104,12 @@ canvas[resize] {
     .home-post {
       @media (min-width: 768px) {
         width: 700px;
+        padding: 1px;
       }
+      padding: 12px;
 
       width: auto;
       text-align: left;
-      padding: 12px;
       margin: 60px 0;
 
       h1 {

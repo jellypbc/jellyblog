@@ -4,11 +4,16 @@
       .col-md-6
         h1 Create an account
         br
-        p Hello friend,
+        p Welcome friend,
         p Please create an account to comment on blog posts. 
         p When you sign up, you'll receive an invite to our Slack channel (#{link_to "http://jelly-community.slack.com", "http://jelly-community.slack.com"}).
         p
           | Our Slack has a #{link_to "Code of Conduct", "https://gitlab.com/cindyw/jelly/wikis/Jelly-Community-Slack-Rules"} which you can browse, but please be nice. We are gentle creatures.
+
+        p
+          | Already have an account? 
+          = link_to "Log in", login_path
+
 
       .col-md-6
         = form_for @user do |f|

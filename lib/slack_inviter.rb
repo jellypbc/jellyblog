@@ -1,12 +1,11 @@
-module SlackInviter
-  extend ActiveSupport::Concern
+class SlackInviter
 
 	CHANNELS = [
     'CNG313A6L', # general
     'CNNGS9C00' # introduce-yourself
   ]
 
-	def send_slack_invite
+	def self.send_slack_invite(email)
 	  if ENV['SLACK_TOKEN']
       invite_uri = URI.parse 'https://jelly-community.slack.com/api/users.admin.invite'
 
@@ -19,7 +18,7 @@ module SlackInviter
 	      json_response = JSON.parse response.body
 
 	      did_it_work = json_response["ok"] ? "Success" : json_response["error"].titleize
-	      notify_slack_inviter_chan(did_it_work)
+	      self.notify_slack_inviter_chan(did_it_work, email)
 
       rescue => e
         error = e
@@ -29,9 +28,9 @@ module SlackInviter
     end
   end
 
-  def notify_slack_inviter_chan(did_it_work)
+  def self.notify_slack_inviter_chan(did_it_work, email)
     hook_url = URI.parse ENV['SLACK_INVITER_HOOK_URL']
-    msg = "#{did_it_work}: User ID: #{id}, Email: #{email}"
+    msg = "#{did_it_work}: Email: #{email}"
 
     begin
       response = Net::HTTP.post_form(hook_url, {

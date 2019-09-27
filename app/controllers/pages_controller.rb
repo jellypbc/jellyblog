@@ -27,7 +27,18 @@ class PagesController < ApplicationController
   end
 
   def follow
+    @no_newsletter = true
+
     @newsletter_signup = NewsletterSignup.new
+  end
+
+  def slack_invite
+    email = params[:slack_invite][:email]
+    
+    if SlackInviter.send_slack_invite(email)
+      redirect_to after_sign_in_path, notice: "Thanks! You'll receive a Slack invite shortly, and now you can comment on blog posts too. ✨"
+    end
+
   end
   
 end

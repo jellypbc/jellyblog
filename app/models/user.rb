@@ -16,7 +16,6 @@
 
 class User < ApplicationRecord
   include TimeScopes
-  include SlackInviter
 
   has_secure_password
 
@@ -24,9 +23,6 @@ class User < ApplicationRecord
 
   VALID_EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   VALID_USERNAME_REGEX = /\A[0-9a-z_-]+\z/i
-
-  SLACK_POST_URL = 'https://jelly-community.slack.com/api/chat.postMessage'
-  SLACK_INVITER_HOOK_URL = 'https://hooks.slack.com/services/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'
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
   validates :password, presence: true, length: { minimum: 5, maximum: 300 }, on: :create
@@ -60,6 +56,10 @@ class User < ApplicationRecord
 
   def send_password_reset
     SendPasswordResetMailerJob.perform_later(id)
+  end
+
+  def send_slack_invite
+    SlackInviter.send_slack_invite(email)
   end
 
   private

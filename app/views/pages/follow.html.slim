@@ -1,22 +1,33 @@
+= content_for(:title) { "Join our newsletter and slack!" }
+
 .signup
   .container
-    .row
+    .row.mbg
       .col-md-6
-        h1 Join our chat!
+        h1 Get our newsletter
         br
-        p Hello friend,
-        p When you sign up, you'll receive an invite to our Slack channel (#{link_to "http://jelly-community.slack.com", "http://jelly-community.slack.com"}) and you'll also be logged in to comment on blog posts here!
+        p We're documenting our process and steps in our blog, and you can get our progress by email whenever we post something.
+      .col-md-6
+        = form_for @newsletter_signup do |f|
+          .field.smol-form
+            label
+              | Email for newsletter
+            = f.email_field :email, required: true, placeholder: "your email address"
+            = f.submit "Sign Up", class: "btn btn-primary btn-lg mt"
+
+    .row.mvg
+      .col-md-6
+        h1 Join our Slack chat
+        br
+        p To join our Slack community chat, you'll have to receive an invite to the group by putting your email into the box: #{link_to "http://jelly-community.slack.com", "http://jelly-community.slack.com"}
         p
           | Our Slack has a #{link_to "Code of Conduct", "https://gitlab.com/cindyw/jelly/wikis/Jelly-Community-Slack-Rules"} which you can browse, but please be nice. We are gentle creatures.
 
       .col-md-6
-        = form_for @newsletter_signup do |f|
-          .field
+        = form_for :slack_invite, url: slack_invite_path, method: :post do |f|
+          .field.smol-form
             label
-              | Email
-              = f.email_field :email, required: true
-          
-          .actions
+              | Email for slack invite
+            = f.email_field :email, required: true, placeholder: "your email address"
             = f.submit "Sign Up", class: "btn btn-primary btn-lg mt"
 
-        

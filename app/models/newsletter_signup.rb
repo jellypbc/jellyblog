@@ -9,7 +9,4 @@
 #
 
 class NewsletterSignup < ApplicationRecord
-	include SlackInviter
-
-	after_create :send_slack_invite
 end

@@ -5,9 +5,17 @@ nav {
   padding: 0.9rem 0;
 
   .header {
+    @media (min-width: 726px) {
+      a.newsletter {
+        left: 0px;
+      }
+    }
+    width: 100%;
+
+
     display: flex;
     min-height: 80px;
-    a {    
+    a {
       width: 100%;
       min-width: 181px;
       left: -181px;
@@ -16,6 +24,33 @@ nav {
       height: 45px;
       &:hover {
         opacity: 1
+      }
+    }
+
+    a.newsletter {
+      @include text-antialiased;
+      color: $shaleDark;
+      font-size: 15px;
+      text-align: right;
+      letter-spacing: -.1px;
+      width: auto;
+      min-width: 179px;
+      padding-bottom: 0px;
+      border-bottom: 4px solid $jellyGreen;
+      position: relative;
+      line-height: 52px;
+      top: -6px;
+      right: 0px;
+      -webkit-font-smoothing: antialiased;
+      font-weight: 600;
+
+      &:hover {
+        color: $black;
+        animation-name: changeBorderColor;
+        animation-iteration-count: infinite;
+        animation-duration: .8s;
+        opacity: 1;
+        text-decoration: none;
       }
     }
     h1 {
@@ -34,46 +69,11 @@ nav {
     position: relative;
     top: -3px;
   }
-  h5 a {
-    color: $brandRed;
-    font-weight: 700;
-  }
-  a {
-    @include text-antialiased;
-    color: $shaleDark;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: -.1px;
-    &:hover {
-      color: $brandRed;
-      opacity: 0.8;
-      transition-duration: 0.15s;
-      text-decoration: none;
-    }
-  }
   svg {
     height: 23px;
     width: auto;
   }
-  .dropdown,
-  .dropdown.show {
-    display: inline-block;
-    margin: 0;
-  }
-  .navbarDropdown {
-    left: -80px;
-  }
-  .btn-register {
-    @include text-antialiased;
-    font-size: 14px;
-    padding: 3px 9px 4px 9px;
-    font-weight: 700;
-  }
-  &.admin {
-    border-top: 1px solid red;
-  }
 }
-
 
 .right {
   display: inline-flex;

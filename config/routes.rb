@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'pages#dashboard'
   get 'follow', to: 'pages#follow'
+  post 'slack_invite', to: 'pages#slack_invite'
 
   get "password_resets/new"
   get 'et/:token/*path', to: 'email_token#login_and_redirect'
