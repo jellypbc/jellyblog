@@ -37,7 +37,6 @@ head
   meta name="twitter:image" content=meta_image_url
   meta name="twitter:card" content="summary_large_image"
 
-
   = favicon_link_tag asset_path('favicon.png')
   
   = csrf_meta_tags
@@ -46,8 +45,6 @@ head
   = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-
-  / link href="https://fonts.googleapis.com/css?family=Merriweather|Baloo|Fredoka+One|Open+Sans:400,600,700" rel="stylesheet"
 
   - if Rails.env.production?
     = javascript_include_tag src="https://www.googletagmanager.com/gtag/js?id=UA-148335124-1"

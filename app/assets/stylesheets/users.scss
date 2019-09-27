@@ -114,10 +114,10 @@
       display: none;
     }
     .message:after {
-      content: "woohoo!";
+      content: "🍮 woohoo!";
       position: absolute;
       color: $shaleLight;
-      font-size: 10px;
+      font-size: 12px;
       // display: none;
       opacity: 0;
     }

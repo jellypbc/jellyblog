@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :users do
     get :reset_password, as: :reset_password
   end
+
+  resources :newsletter_signups
   
   get 'settings', to: 'users#edit', as: 'settings'
   get 'register', to: 'users#new', as: 'register'
@@ -31,10 +33,11 @@ Rails.application.routes.draw do
   namespace :admin, module: 'admin' do
     resources :users
     resources :posts
+    resources :newsletter_signups
   end
 
   get 'dashboard', to: 'pages#dashboard'
-  get 'slack', to: 'pages#slack'
+  get 'follow', to: 'pages#follow'
 
   get "password_resets/new"
   get 'et/:token/*path', to: 'email_token#login_and_redirect'

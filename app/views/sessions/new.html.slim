@@ -1,23 +1,25 @@
 .signup
   .container
-    h1 Log In
+    .row
+      .col-md-6
+        h1 Log In
 
-    p
-      | Need to create an account? 
-      = link_to "Register", register_path
+        p
+          | Need to create an account? 
+          = link_to "Register", register_path
 
-    = form_for :session, method: :post do |f|
-      .field
-        label 
-          | Email
-          = f.email_field :email, required: true, autofocus: true
-      
-      .field
-        label
-          | Password
-          = f.password_field :password, required: true, minlength: 5, maxlength: 300
-      
-      .actions
-        = f.submit "Login", class: "btn btn-primary btn-lg"
-    
-    p = link_to "Forgot your password?", password_resets_new_path
+        = form_for :session, method: :post do |f|
+          .field
+            label 
+              | Email
+              = f.email_field :email, required: true, autofocus: true
+          
+          .field
+            label
+              | Password
+              = f.password_field :password, required: true, minlength: 5, maxlength: 300
+          
+          .actions
+            = f.submit "Login", class: "btn btn-primary btn-lg"
+        
+        p = link_to "Forgot your password?", password_resets_new_path

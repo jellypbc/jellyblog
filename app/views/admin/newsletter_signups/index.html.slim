@@ -1,0 +1,24 @@
+.content.pvg.mbg
+  .container.mbg
+    .row
+      .col-md-8
+        h1 Newsletter Signups
+        p #{@newsletter_signups.total_entries} newsletter signups
+
+        .back-to = link_to "Back to Admin", admin_path
+      .col-md-12
+        .mvg
+          table.table
+            thead
+              tr
+                th ID
+                th Email
+                th Created At
+            tbody
+              - @newsletter_signups.each do |newsletter_signup|
+                tr
+                  td = link_to newsletter_signup.id, newsletter_signup_path(newsletter_signup)
+                  td = newsletter_signup.email
+                  td = newsletter_signup.created_at.strftime("%d %b %Y %l:%M %p")
+
+          = will_paginate @newsletter_signups

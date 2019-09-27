@@ -1,7 +1,10 @@
 module SlackInviter
   extend ActiveSupport::Concern
 
-	CHANNELS = ['CNG313A6L', 'CNNGS9C00'] # jelly-community #general, #introduce-yourself
+	CHANNELS = [
+    'CNG313A6L', # general
+    'CNNGS9C00' # introduce-yourself
+  ]
 
 	def send_slack_invite
 	  if ENV['SLACK_TOKEN']

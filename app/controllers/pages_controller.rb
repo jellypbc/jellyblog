@@ -26,7 +26,8 @@ class PagesController < ApplicationController
   def admin
   end
 
-  def slack
+  def follow
+    @newsletter_signup = NewsletterSignup.new
   end
   
 end
