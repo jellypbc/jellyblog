@@ -20,22 +20,26 @@
 
     .post-comments.mvg
       h3 Comments
-      - @post.comments.each do |comment|
-        .comment.mvm
-          .comment-user
-            = link_to comment.user.username, comment.user
-          .comment-content = comment.content
-          .date #{time_ago_in_words(comment.created_at)} ago
+      - if @post.comments.any?
+        - @post.comments.each do |comment|
+          .comment.mvm
+            .comment-user
+              = link_to comment.user.username, comment.user
+            .comment-content = comment.content
+            .date #{time_ago_in_words(comment.created_at)} ago
 
-          - if current_user && comment.user == current_user
-            = link_to [comment.commentable, comment], method: :delete, data: { confirm: 'Are you sure?' } do
-              | Delete
+            - if current_user && comment.user == current_user
+              = link_to [comment.commentable, comment], method: :delete, data: { confirm: 'Are you sure?' } do
+                | Delete
+      - else
+        .no-comments
+          | No comments yet
 
       - if current_user
         - comment = @post.comments.new
         = form_for [@post, comment] do |f|
           .field
-            = f.text_area :content, rows: 3, required: true
+            = f.text_area :content, rows: 3, required: true, placeholder: "Add a comment..."
           .actions
             = f.submit "Add Comment", class: "btn btn-primary"
       - else

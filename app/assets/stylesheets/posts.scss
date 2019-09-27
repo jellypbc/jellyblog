@@ -64,6 +64,7 @@
   p {
     line-height: 33px;
     font-size: 19px;
+    font-weight: 400;
   }
 
   .post-comments {
@@ -72,9 +73,14 @@
       width: 100%;
     }
   }
+  .no-comments {
+    opacity: 0.3;
+  }
 }
 
 .trix-content {
-  line-1eight: 1.7;
+  line-height: 1.7;
   font-size: 19px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
 }
