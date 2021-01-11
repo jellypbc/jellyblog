@@ -255,7 +255,7 @@ GEM
       tilt
     recaptcha (5.1.0)
       json
-    redcarpet (3.5.0)
+    redcarpet (3.5.1)
     redis (4.1.0)
     redis-namespace (1.6.0)
       redis (>= 3.0.4)
